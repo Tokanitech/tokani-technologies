@@ -5,7 +5,7 @@ import { FormEvent, useState } from "react";
 const recipient = "desmond@tokani.com.fj";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "fallback" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "sent_no_confirmation" | "fallback" | "error">("idle");
 
   async function submitEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,7 +29,8 @@ export default function ContactForm() {
         body: JSON.stringify({ name, business, email, phone, service, contact, details, website: form.get("website") }),
       });
       if (response.ok) {
-        setStatus("sent");
+        const result = await response.json().catch(() => ({}));
+        setStatus(result?.confirmationSent === false ? "sent_no_confirmation" : "sent");
         formElement.reset();
         return;
       }
@@ -55,7 +56,8 @@ export default function ContactForm() {
       <div className="form-submit"><button className="button button-light" type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send my enquiry"} <span aria-hidden="true">→</span></button><p>We normally respond within one business day.</p></div>
       <p className="form-privacy">Your information will only be used to respond to your enquiry. Tokani does not sell or share enquiry information.</p>
       <div aria-live="polite">
-        {status === "sent" && <p className="form-status success" role="status"><strong>Vinaka—your enquiry has been sent.</strong> We&apos;ll respond within one business day.</p>}
+        {status === "sent" && <p className="form-status success" role="status"><strong>Vinaka—your enquiry has been sent.</strong> We&apos;ve also emailed you a confirmation. We&apos;ll respond within one business day.</p>}
+        {status === "sent_no_confirmation" && <p className="form-status success" role="status"><strong>Vinaka—your enquiry has been sent.</strong> We couldn&apos;t send the confirmation email, but your enquiry reached us and we&apos;ll respond within one business day.</p>}
         {status === "fallback" && <p className="form-status" role="status">Your email app has been opened with the enquiry ready. Please press send.</p>}
         {status === "error" && <p className="form-status error" role="alert">We couldn&apos;t send that enquiry. Please email <a href={`mailto:${recipient}`}>{recipient}</a> or call us on <a href="tel:+6799021622">+679 902 1622</a>.</p>}
       </div>

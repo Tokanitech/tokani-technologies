@@ -1,4 +1,4 @@
-const recipient = "desmond@tokani.com.fj";
+const recipient = "askme@tokani.com.fj";
 const fallbackFrom = "Tokani Technologies <askme@tokani.com.fj>";
 const replyTo = "askme@tokani.com.fj";
 

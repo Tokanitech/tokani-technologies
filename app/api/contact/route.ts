@@ -1,6 +1,6 @@
 const recipient = "desmond@tokani.com.fj";
-const fallbackFrom = "Tokani Technologies <tokani@islandtraveltech.com>";
-const replyTo = "desmond@tokani.com.fj";
+const fallbackFrom = "Tokani Technologies <askme@tokani.com.fj>";
+const replyTo = "askme@tokani.com.fj";
 
 function clean(value: unknown, maximum = 2000) {
   return String(value ?? "").trim().slice(0, maximum);

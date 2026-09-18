@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 
-const recipient = "desmond@tokani.com.fj";
+const recipient = "askme@tokani.com.fj";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "sent_no_confirmation" | "fallback" | "error">("idle");

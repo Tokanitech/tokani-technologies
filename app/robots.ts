@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
-
+import { siteUrl, preview } from "./lib/seo";
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://www.tokani.com.fj/sitemap.xml",
-    host: "https://www.tokani.com.fj",
-  };
+  return preview
+    ? { rules: { userAgent: "*", disallow: "/" } }
+    : {
+        rules: { userAgent: "*", allow: "/" },
+        sitemap: `${siteUrl}/sitemap.xml`,
+      };
 }

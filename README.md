@@ -1,16 +1,38 @@
-# Tokani Technologies Corporate Website
+# Tokani Technologies
 
-Static website built from Tokani brand guidelines and the current Yavu / Tubu / Qaqa service structure.
+Corporate website for Tokani Technologies, built with Next.js App Router and deployed through Vercel.
 
-## Pages
-- Home
-- Our Story
-- Solutions
-- How We Work
-- Start a Conversation / Initial Scoping
+## Development
 
-## Brand system
-Uses the approved Tokani logo and favicon assets, Inter typography, white/black primary canvas, Fiji Sky Blue for digital action, Tokani Brown for warmth, and the Yavu → Tubu → Qaqa service journey.
+Use Node.js 22.13 or later.
 
-## Launch note
-The initial scoping form currently prepares and copies the enquiry locally. Connect the form to the final Tokani CRM/contact channel before public lead-generation launch.
+```sh
+npm ci
+npm run dev
+```
+
+Copy `.env.example` to `.env.local` when configuring email. Never commit credentials.
+
+## Verification
+
+```sh
+npm run lint
+npm test
+npm run build
+npm run typecheck
+npm start
+# In a second terminal:
+npm run test:site
+```
+
+`npm test` checks enquiry validation and email failure handling without sending any real email. `test:site` checks the running production server (default http://localhost:3000, override TEST_BASE_URL).
+
+## Deployment
+
+Vercel uses the standard `npm run build`. Preview deployments carry noindex and disallow crawling; production uses canonical URLs under https://www.tokani.com.fj.
+
+Required email configuration: RESEND_API_KEY. Optional CONTACT_FROM_EMAIL defaults to Tokani Technologies <askme@tokani.com.fj>. Recipients are server-controlled. General enquiries go to askme@tokani.com.fj.
+
+NEXT_PUBLIC_ENABLE_ANALYTICS is false by default. Enable only with the agreed Vercel Analytics setup; no form contents are collected in custom events.
+
+See [delivery record](docs/revamp-delivery.md) for source evidence, content decisions, external dependencies and release checks.

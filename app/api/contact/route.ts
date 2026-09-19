@@ -3,11 +3,19 @@ const fallbackFrom = "Tokani Technologies <askme@tokani.com.fj>";
 const replyTo = "askme@tokani.com.fj";
 
 function clean(value: unknown, maximum = 2000) {
-  return String(value ?? "").trim().slice(0, maximum);
+  return String(value ?? "")
+    .trim()
+    .slice(0, maximum);
 }
 
 function escapeHtml(value: string) {
-  return value.replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[character] || character);
+  return value.replace(
+    /[&<>'"]/g,
+    (character) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[
+        character
+      ] || character,
+  );
 }
 
 function confirmationHtml({
@@ -127,23 +135,110 @@ function confirmationText({
   ].join("\n");
 }
 
+export const maxDuration = 30;
+const services = new Set([
+  "Yavu — Website foundation",
+  "Tubu — Website and CRM",
+  "Qaqa — Custom system",
+  "TravelOps",
+  "Not sure yet",
+]);
+const contacts = new Set(["Email", "Phone call", "WhatsApp"]);
+const limits: Record<string, number> = {
+  name: 120,
+  business: 160,
+  email: 254,
+  phone: 80,
+  service: 120,
+  contact: 80,
+  details: 4000,
+  website: 200,
+};
+
 async function sendEmail(apiKey: string, body: Record<string, unknown>) {
-  return fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(10000),
+    });
+    if (!response.ok)
+      console.error("Tokani email delivery failed", response.status);
+    return response.ok;
+  } catch {
+    console.error("Tokani email service unavailable");
+    return false;
+  }
+}
+
+async function readPayload(
+  request: Request,
+): Promise<Record<string, unknown> | null> {
+  if (!request.body) return null;
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > 24000) {
+        await reader.cancel();
+        return null;
+      }
+      chunks.push(value);
+    }
+    const buffer = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) {
+      buffer.set(chunk, offset);
+      offset += chunk.byteLength;
+    }
+    const parsed: unknown = JSON.parse(new TextDecoder().decode(buffer));
+    return parsed !== null &&
+      typeof parsed === "object" &&
+      !Array.isArray(parsed)
+      ? (parsed as Record<string, unknown>)
+      : null;
+  } catch {
+    return null;
+  } finally {
+    reader.releaseLock();
+  }
 }
 
 export async function POST(request: Request) {
-  let payload: Record<string, unknown>;
-  try {
-    payload = await request.json();
-  } catch {
+  const origin = request.headers.get("origin");
+  if (origin && origin !== new URL(request.url).origin)
+    return Response.json({ error: "Invalid enquiry origin." }, { status: 403 });
+  if (
+    !request.headers
+      .get("content-type")
+      ?.toLowerCase()
+      .startsWith("application/json")
+  )
+    return Response.json({ error: "JSON required." }, { status: 415 });
+  const payload = await readPayload(request);
+  if (!payload)
     return Response.json({ error: "Invalid enquiry." }, { status: 400 });
+  if (typeof payload.website === "string" && payload.website.trim())
+    return Response.json({ ok: true, confirmationSent: false });
+  for (const [key, maximum] of Object.entries(limits)) {
+    if (
+      payload[key] !== undefined &&
+      (typeof payload[key] !== "string" ||
+        (payload[key] as string).length > maximum)
+    )
+      return Response.json(
+        { error: "Please check your enquiry details." },
+        { status: 400 },
+      );
   }
-
-  if (clean(payload.website)) return Response.json({ ok: true });
   const name = clean(payload.name, 120);
   const business = clean(payload.business, 160);
   const email = clean(payload.email, 254);
@@ -151,17 +246,40 @@ export async function POST(request: Request) {
   const service = clean(payload.service, 120);
   const contact = clean(payload.contact, 80);
   const details = clean(payload.details, 4000);
-  if (!name || !email || !phone || !service || !contact || !details || !/^\S+@\S+\.\S+$/.test(email)) {
-    return Response.json({ error: "Please complete all required fields." }, { status: 400 });
+  if (
+    !name ||
+    !email ||
+    !phone ||
+    !details ||
+    !services.has(service) ||
+    !contacts.has(contact) ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+    /[\r\n]/.test(name + business + phone)
+  ) {
+    return Response.json(
+      { error: "Please complete all required fields." },
+      { status: 400 },
+    );
   }
-
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return Response.json({ error: "Email delivery is not configured.", fallback: true }, { status: 503 });
-
+  if (!apiKey)
+    return Response.json(
+      { error: "Email delivery is not configured.", fallback: true },
+      { status: 503 },
+    );
   const from = process.env.CONTACT_FROM_EMAIL || fallbackFrom;
-  const safe = Object.fromEntries(Object.entries({ name, business: business || "Not provided", email, phone, service, contact, details }).map(([key, value]) => [key, escapeHtml(value)]));
-
-  const notification = await sendEmail(apiKey, {
+  const safe = Object.fromEntries(
+    Object.entries({
+      name,
+      business: business || "Not provided",
+      email,
+      phone,
+      service,
+      contact,
+      details,
+    }).map(([key, value]) => [key, escapeHtml(value)]),
+  );
+  const notificationSent = await sendEmail(apiKey, {
     from,
     to: [recipient],
     reply_to: email,
@@ -179,15 +297,11 @@ export async function POST(request: Request) {
       "Project details:",
       details,
     ].join("\n"),
-    html: `<div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;color:#222"><h1 style="font-size:24px">New Tokani website enquiry</h1><p><strong>Name:</strong> ${safe.name}</p><p><strong>Business:</strong> ${safe.business}</p><p><strong>Email:</strong> ${safe.email}</p><p><strong>Phone / WhatsApp:</strong> ${safe.phone}</p><p><strong>Service:</strong> ${safe.service}</p><p><strong>Preferred contact:</strong> ${safe.contact}</p><hr style="border:0;border-top:1px solid #ddd"><h2 style="font-size:18px">Project details</h2><p style="white-space:pre-wrap">${safe.details}</p></div>`,
+    html: `<div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;color:#222"><h1>New Tokani website enquiry</h1><p><strong>Name:</strong> ${safe.name}</p><p><strong>Business:</strong> ${safe.business}</p><p><strong>Email:</strong> ${safe.email}</p><p><strong>Phone:</strong> ${safe.phone}</p><p><strong>Service:</strong> ${safe.service}</p><p><strong>Preferred contact:</strong> ${safe.contact}</p><h2>Project details</h2><p style="white-space:pre-wrap">${safe.details}</p></div>`,
   });
-
-  if (!notification.ok) {
-    console.error("Tokani enquiry notification failed", notification.status, await notification.text());
+  if (!notificationSent)
     return Response.json({ error: "Email delivery failed." }, { status: 502 });
-  }
-
-  const confirmation = await sendEmail(apiKey, {
+  const confirmationSent = await sendEmail(apiKey, {
     from,
     to: [email],
     reply_to: replyTo,
@@ -195,11 +309,5 @@ export async function POST(request: Request) {
     text: confirmationText({ name, business, service, contact }),
     html: confirmationHtml({ name, business, service, contact }),
   });
-
-  if (!confirmation.ok) {
-    console.error("Tokani enquiry confirmation failed", confirmation.status, await confirmation.text());
-    return Response.json({ ok: true, confirmationSent: false });
-  }
-
-  return Response.json({ ok: true, confirmationSent: true });
+  return Response.json({ ok: true, confirmationSent });
 }

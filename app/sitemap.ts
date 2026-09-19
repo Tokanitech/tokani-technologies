@@ -1,10 +1,21 @@
 import type { MetadataRoute } from "next";
-
-const base = "https://www.tokani.com.fj";
-
+import { services, caseStudies } from "./lib/content";
+import { siteUrl, preview } from "./lib/seo";
 export default function sitemap(): MetadataRoute.Sitemap {
+  if (preview) return [];
   return [
-    { url: base, changeFrequency: "weekly", priority: 1 },
-    { url: `${base}/case-studies/unravel-viti`, changeFrequency: "monthly", priority: 0.9 },
-  ];
+    "",
+    "/services",
+    ...services.map((s) => `/services/${s.slug}`),
+    "/products",
+    "/our-work",
+    "/about",
+    "/contact",
+    "/privacy",
+    ...Object.keys(caseStudies).map((s) => `/case-studies/${s}`),
+  ].map((path) => ({
+    url: `${siteUrl}${path}`,
+    changeFrequency: "monthly",
+    priority: path === "" ? 1 : path === "/privacy" ? 0.3 : 0.8,
+  }));
 }

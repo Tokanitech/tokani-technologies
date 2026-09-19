@@ -1,45 +1,190 @@
-import ContactForm from "./contact-form";
-
-const Arrow = () => <span aria-hidden="true">→</span>;
-const portfolio = [
-  { name: "Macquarie Travelworld", type: "Corporate travel", copy: "A complete digital presence for a Fiji travel company with more than 70 years of service.", tag: "Live client work", image: "/portfolio/portfolio-macquarie.jpg", href: "https://macquarie-travel-site.vercel.app", external: true, linkLabel: "View live" },
-  { name: "JAD Travel", type: "Corporate & group travel", copy: "A heritage-led redesign built around JAD's real Suva team, specialist knowledge and decades of corporate and group travel experience.", tag: "Website · Content · SEO", image: "/portfolio/portfolio-jad.jpg", href: "https://jad-site-build.vercel.app", external: true, linkLabel: "View live" },
-  { name: "Discount Flight Centre", type: "Retail travel & airline representation", copy: "A service-led redesign connecting customers to local consultants, practical travel pathways and DFC's Air Niugini GSA role.", tag: "Website · Campaigns · GSA", image: "/portfolio/portfolio-dfc.jpg", href: "https://dfc-main-website.vercel.app", external: true, linkLabel: "View live" },
-  { name: "Tokani Careers", type: "Community technology", copy: "A free, privacy-first careers guide helping Fiji students connect school subjects to pathways.", tag: "Live platform", image: "/portfolio/portfolio-careers.jpg", href: "https://careers.tokani.com.fj", external: true, linkLabel: "View live" },
-  { name: "Quote My Job", type: "Trade & SME technology", copy: "An offline-first mobile calculator helping Fiji builders and tradespeople understand job cost, set a customer price and know their safe negotiation floor.", tag: "Live Tokani product", image: "/portfolio/portfolio-quote-my-job.svg", href: "https://quotemyjob.tokani.com.fj", external: true, linkLabel: "View live" },
-  { name: "FNU Programme Finder", type: "Education platform", copy: "A Tokani demonstration that turns complex programme information into a clear student journey.", tag: "Live demonstration", image: "/portfolio/portfolio-fnu.jpg", href: "https://fnu-careers-app.vercel.app", external: true, linkLabel: "View live" },
-  { name: "Unravel Viti", type: "Community-led tourism & transport", copy: "A strategic digital foundation combining transport, cultural experiences, enquiry design, authentic photography and local SEO.", tag: "Flagship case study · Launch completion", image: "/portfolio/portfolio-unravel.jpg", href: "/case-studies/unravel-viti", external: false, linkLabel: "Read case study" },
-]
-
+import Link from "next/link";
+import { Cta, ProjectImage } from "./components/ui";
+import ProjectCard from "./components/project-card";
+import { projects, services } from "./lib/content";
+import { pageMetadata } from "./lib/seo";
+export const metadata = pageMetadata(
+  "Websites & Business Systems in Fiji",
+  "Websites, CRM and custom business systems for Fiji businesses. Meet Tokani Technologies, explore our work and find a practical place to start.",
+  "/",
+);
 export default function Home() {
-  return <main>
-    <header className="site-header"><a className="brand" href="#top" aria-label="Tokani Technologies home"><img src="/brand/tokani-logo-transparent.webp" alt="Tokani Technologies" width={366} height={92} /></a><nav aria-label="Main navigation"><a href="#services">What we do</a><a href="#platforms">Digital platforms</a><a href="#work">Our work</a><a href="#case-studies">Case studies</a><a href="#story">Our story</a></nav><a className="button button-small" href="#contact">Let&apos;s talk <Arrow /></a></header>
-    <section className="hero" id="top"><div className="hero-copy"><p className="eyebrow blue">Suva, Fiji · Websites · Business systems · Digital platforms</p><h1>Technology for the way <em>we do business.</em></h1><p className="lead">Tokani builds websites, digital platforms and practical systems around the way Fiji businesses and organisations actually work.</p><div className="hero-actions"><a className="button" href="#services">Find your starting point <Arrow /></a><a className="text-link" href="#work">See real work <Arrow /></a></div><p className="hero-note">Your friend in technology.</p></div><div className="hero-proof"><figure className="proof-main"><img src="/portfolio/portfolio-dfc.jpg" alt="Discount Flight Centre website built in Fiji" width={1360} height={933} /></figure><figure className="proof-small proof-one"><img src="/portfolio/portfolio-jad.jpg" alt="JAD Travel website built in Fiji" width={1360} height={904} /></figure><figure className="proof-small proof-two"><img src="/portfolio/portfolio-unravel.jpg" alt="Unravel Viti website" width={1360} height={904} /></figure><span className="made-stamp">BUILT<br/>IN FIJI</span></div></section>
-    <section className="intro section"><p className="eyebrow">A practical partner, not a technology sales pitch.</p><div className="intro-grid"><h2>We listen first. Then we help you move forward.</h2><p>Whether you need a professional website, better customer follow-up, or a system built around the way your organisation works, Tokani begins by understanding the problem—not by selling you more technology than you need.</p></div></section>
-    <section className="journey section" id="services"><div className="section-heading"><div><p className="eyebrow blue">One journey. One Tokani.</p><h2>Start where you are.<br />Grow when you&apos;re ready.</h2></div><p>Our services follow the natural journey of a business—from a strong foundation, through growth, to digital capability built around you.</p></div><div className="service-grid">
-      <article className="service-card yavu"><p className="stage">01 — FOUNDATION</p><h3>Yavu</h3><p className="service-line">Establish your professional digital foundation.</p><div className="flow">Website <Arrow /> Email <Arrow /> Enquiry</div><ul><li>Up to 5-page website</li><li>Professional business email</li><li>Hosting, SSL, analytics and handover</li></ul><p className="price">FJD 500 <small>fixed</small></p><a href="#contact">Build my foundation <Arrow /></a></article>
-      <article className="service-card tubu"><p className="stage">02 — GROWTH</p><h3>Tubu</h3><p className="service-line">Turn customer interest into organised follow-up.</p><div className="flow">Website <Arrow /> CRM <Arrow /> Follow-up <Arrow /> Sale</div><ul><li>Up to 8-page website</li><li>Zoho CRM setup and 1 user</li><li>Lead pipeline, tasks and basic automation</li></ul><p className="price">FJD 1,650 <small>fixed</small></p><a href="#contact">Explore Tubu <Arrow /></a></article>
-      <article className="service-card qaqa"><p className="stage">03 — STRENGTH</p><h3>Qaqa</h3><p className="service-line">Build technology around your organisation.</p><div className="flow">Systems <Arrow /> Platforms <Arrow /> Capability</div><ul><li>Portals, directories and service finders</li><li>Workflows, integrations and automation</li><li>Assessments, reporting and custom applications</li></ul><p className="price">From FJD 2,500</p><a href="#contact">Talk through your idea <Arrow /></a></article>
-    </div><p className="renewal-note">Included hosting and software licences apply for the first 12 months. Renewals and work outside the agreed scope are quoted separately.</p></section>
-    <section className="platforms section" id="platforms"><div className="section-heading"><div><p className="eyebrow blue">Beyond websites</p><h2>Digital platforms.<br />Practical systems.</h2></div><p>When the challenge is bigger than a website, we turn complex information, decisions and processes into tools people can actually use.</p></div><div className="platform-service-grid"><article><span>01</span><h3>Programme &amp; service finders</h3><p>Searchable guides that help people navigate programmes, services, policies and opportunities.</p></article><article><span>02</span><h3>Eligibility &amp; pathway tools</h3><p>Guided tools that connect a user&apos;s circumstances to relevant options and next steps.</p></article><article><span>03</span><h3>Assessments &amp; recommendations</h3><p>Quizzes, readiness checks and recommendation tools designed around clear decision logic.</p></article><article><span>04</span><h3>Directories &amp; portals</h3><p>Structured platforms for programmes, members, suppliers, jobs or community resources.</p></article><article><span>05</span><h3>Offline-first applications</h3><p>Mobile-friendly tools designed to remain useful where data or connectivity is limited.</p></article><article><span>06</span><h3>Data transformation</h3><p>Turn prospectuses, spreadsheets and policy documents into structured digital experiences.</p></article></div><div className="platform-proof"><a href="https://careers.tokani.com.fj" target="_blank" rel="noreferrer"><img src="/portfolio/portfolio-careers.jpg" alt="Tokani Careers live platform" width={1360} height={904}/><div><p className="eyebrow blue">Proven through Tokani Careers</p><h3>A privacy-first career guidance platform built for Fiji.</h3><p>Subject matching, more than 200 career pathways, an interactive career quiz, parent and teacher guidance, institution information and device-only data.</p><span>Explore the live platform <Arrow /></span></div></a><a href="https://fnu-careers-app.vercel.app" target="_blank" rel="noreferrer"><img src="/portfolio/portfolio-fnu.jpg" alt="FNU Programme Finder demonstration" width={1360} height={904}/><div><p className="eyebrow brown">Proven through the FNU Programme Finder</p><h3>245 study pathways made searchable and understandable.</h3><p>A full prospectus translated into stream-based guidance, programme search, entry-condition references and career connections.</p><span>Explore the live demonstration <Arrow /></span></div></a></div></section>
-    <section className="work section" id="work"><div className="section-heading"><div><p className="eyebrow brown">Selected work · live sites &amp; products</p><h2>Built here.<br />Working now.</h2></div><p>These are real Tokani and ITT projects—not mock-ups or template concepts. Live links and deeper case studies are shown where appropriate.</p></div><div className="portfolio-grid">{portfolio.map((item, i) => <a className="portfolio-card" key={item.name} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined}><div className="portfolio-image"><img src={item.image} alt={`${item.name} project`} width={1360} height={904}/><span>0{i + 1}</span></div><div className="portfolio-body"><p className="portfolio-type">{item.type}</p><h3>{item.name}</h3><p>{item.copy}</p><div className="portfolio-footer"><span>{item.tag}</span><span>{item.linkLabel} <Arrow /></span></div></div></a>)}</div></section>
-    <section className="case-studies section" id="case-studies"><div className="section-heading"><div><p className="eyebrow blue">Selected client stories</p><h2>More than<br />a new look.</h2></div><p>The strongest work begins with the organisation&apos;s real commercial role, customers and operating strengths—then turns those into a clearer digital experience.</p></div>
-      <article className="flagship-case-teaser"><div className="flagship-case-visual"><img src="/portfolio/portfolio-unravel.jpg" alt="Unravel Viti digital platform developed by Tokani Technologies" width={1360} height={904}/><span>Flagship SME case study</span></div><div className="flagship-case-content"><p className="eyebrow brown">Unravel Viti · Community-led tourism</p><h3>From a five-page website brief to a future-ready digital foundation.</h3><p>Tokani concentrated a broad tourism and community vision into a customer-ready platform combining transport, cultural experiences, enquiry design, authentic photography, local SEO and scalable architecture.</p><div className="flagship-case-tags"><span>Strategy</span><span>UX</span><span>Custom development</span><span>Photography</span><span>Local SEO</span><span>Future-ready architecture</span></div><a className="case-link" href="/case-studies/unravel-viti">Read the full case study <Arrow /></a></div></article>
-      <article className="case-study dfc-case"><div className="case-visual"><img src="/portfolio/portfolio-dfc.jpg" alt="Redesigned Discount Flight Centre website" width={1360} height={904}/><span>01 · DFC</span></div><div className="case-content"><p className="eyebrow blue">Discount Flight Centre</p><h3>From a general travel site to a connected customer and trade platform.</h3><p className="case-lead">DFC needed to show the value of a real Fiji travel team while giving each customer a more useful way to start online.</p><div className="case-points"><div><h4>The direction</h4><p>Inspired by modern service-led travel brands, but grounded in DFC&apos;s own identity: bold red, white and charcoal, strong destination imagery, authentic office photography and direct language.</p></div><div><h4>What was redesigned</h4><p>The carousel and generic content were replaced with clear pathways for flights, holidays, visas, existing bookings, corporate and group travel, and Air Niugini support.</p></div><div><h4>What makes it useful</h4><p>Customers send the right information once and continue with a Fiji-based consultant. Dedicated Suva, Nadi and Labasa content strengthens local search and trust.</p></div><div><h4>Wider delivery</h4><p>The work extended into SEO, social previews, media releases, campaign creative, enquiry journeys and a dedicated Air Niugini Fiji GSA service presence.</p></div></div><a className="case-link" href="https://dfc-main-website.vercel.app" target="_blank" rel="noreferrer">View the redesigned DFC site <Arrow /></a></div></article>
-      <article className="gsa-case"><div className="gsa-copy"><p className="eyebrow brown">Air Niugini Fiji GSA communications</p><h3>A coordinated trade communication system—not a one-off graphic.</h3><p>The appointment of DFC as Air Niugini&apos;s General Sales Agent in Fiji created a new communications responsibility. We developed a recognisable newsletter system for travel agents and partners, connecting the GSA announcement, route information, local support and future trade updates.</p><ul><li>DFC GSA Update: a focused Air Niugini Fiji trade edition</li><li>DFC Travel Connect: a broader recurring travel and partner newsletter format</li><li>MailerLite campaign setup, distribution and performance reporting</li><li>Consistent website, email and campaign messaging</li></ul><div className="campaign-stats"><div><strong>41</strong><span>trade emails sent</span></div><div><strong>65.85%</strong><span>opened</span></div><div><strong>9.76%</strong><span>clicked</span></div><div><strong>14.81%</strong><span>click-to-open rate</span></div><div><strong>0%</strong><span>unsubscribed</span></div><div><strong>0%</strong><span>spam complaints</span></div></div><p className="metric-note">First edition sent 13 July 2026. Results shown from the MailerLite campaign report; the audience was a focused list of 41 recipients.</p></div><div className="newsletter-pair"><figure><img src="/portfolio/dfc-gsa-update.webp" alt="First edition of the DFC GSA Update for Air Niugini Fiji trade partners" width={1024} height={1536}/><figcaption>DFC GSA Update · Issue 01</figcaption></figure><figure><img src="/portfolio/dfc-travel-connect.webp" alt="First edition of the DFC Travel Connect newsletter" width={1080} height={1525}/><figcaption>DFC Travel Connect · Issue 01</figcaption></figure></div></article>
-      <article className="case-study jad-case"><div className="case-visual"><img src="/portfolio/portfolio-jad.jpg" alt="Redesigned JAD Travel website" width={1360} height={904}/><span>02 · JAD</span></div><div className="case-content"><p className="eyebrow blue">JAD International Travel Services</p><h3>Turning history, specialist knowledge and real people into the brand.</h3><p className="case-lead">The earlier site was clean but could have belonged to almost any travel agency. The redesign made JAD recognisably JAD.</p><div className="case-points"><div><h4>The direction</h4><p>Inspired by established professional-services firms: confident navy and blue, warm neutral space, editorial storytelling and restrained design rather than cheap-fare advertising.</p></div><div><h4>Authenticity first</h4><p>Generic airport imagery and artificial-looking artwork were replaced with JAD&apos;s official identity, real Suva office and team photography, and the story of the people behind the service.</p></div><div><h4>A clearer position</h4><p>The site now leads with corporate, group, visa and medical travel—areas where judgement, documentation, coordination and accountability matter.</p></div><div><h4>Knowledge as proof</h4><p>The JAD Travel Desk turns the team&apos;s experience into practical original guidance for Fiji organisations and group leaders, supporting both trust and search visibility.</p></div></div><a className="case-link" href="https://jad-site-build.vercel.app" target="_blank" rel="noreferrer">View the redesigned JAD site <Arrow /></a></div></article>
-    </section>
-    <section className="education-case section" id="education-case"><div className="section-heading"><div><p className="eyebrow blue">Education technology case study</p><h2>From one family&apos;s<br />question to a platform.</h2></div><p>Tokani Careers began with a real problem at home, then grew into a Fiji-focused guidance platform and an institution-specific demonstration for FNU.</p></div>
-      <div className="origin-story"><div className="origin-number">01</div><div><p className="eyebrow brown">The reason it began</p><h3>How does an Agriculture student find her way into Information Systems?</h3><p>Tokani&apos;s founder was helping his daughter understand how she could move from studying Agriculture at Suva Muslim College to a Diploma in Information Systems at USP. The pathway was possible, but it was not clearly visible.</p><p>The family had to search across programme information, subject requirements and different institutional sources to work out what her next step could be. There was no single Fiji-focused online tool that connected a student&apos;s current subjects with realistic study and career pathways.</p><blockquote>That family experience became the starting point for Tokani Careers: make the path clearer for the next student and parent.</blockquote></div></div>
-      <article className="education-product tokani-careers-case"><div className="education-image"><img src="/portfolio/portfolio-careers.jpg" alt="Tokani Careers subject and career guidance platform" width={1360} height={904}/><span>Live community platform</span></div><div className="education-copy"><p className="eyebrow blue">Tokani Careers</p><h3>Free career guidance designed around Fiji students.</h3><p>Tokani Careers connects Forms 3–7 subjects and interests to careers, university and TVET pathways, entry information, costs and local context. It also gives parents and teachers a clearer way to support the conversation.</p><div className="education-features"><span>Subject-to-career matching</span><span>Career and programme search</span><span>7-step interest quiz</span><span>Parent and teacher guidance</span><span>Fiji institutions and pathways</span><span>TSLS-style affordability guidance</span><span>No login or personal-data collection</span><span>Offline access after first load</span></div><p className="education-principle">Designed so a student&apos;s location, connectivity or access to a career counsellor does not decide whether they can explore their future.</p><a className="case-link" href="https://careers.tokani.com.fj" target="_blank" rel="noreferrer">Explore Tokani Careers <Arrow /></a></div></article>
-      <div className="education-bridge"><span>What we learned</span><Arrow /><span>Apply it to one institution</span><Arrow /><span>Make a complex prospectus easier to navigate</span></div>
-      <article className="education-product fnu-case"><div className="education-image"><img src="/portfolio/portfolio-fnu.jpg" alt="Tokani demonstration of an FNU Programme and Pathway Finder" width={1360} height={904}/><span>Tokani demonstration</span></div><div className="education-copy"><p className="eyebrow brown">FNU Programme &amp; Pathway Finder</p><h3>Turning 212 prospectus pages into a guided student journey.</h3><p>The FNU demonstration applies the same idea to one institution. It translates 245 school-leaver pathways across seven FNU colleges and centres into a simpler journey from school level and stream to relevant programmes, published entry conditions and possible careers.</p><div className="fnu-evidence"><div><strong>212</strong><span>prospectus pages reviewed</span></div><div><strong>245</strong><span>school-leaver pathways structured</span></div><div><strong>7</strong><span>FNU colleges and centres covered</span></div></div><p>It is designed as a planning and outreach tool—not an eligibility decision. Programme availability, admission conditions and all official advice must still be confirmed directly with Fiji National University.</p><div className="fnu-status"><strong>Current status</strong><p>Discussions with FNU&apos;s Outreach team are ongoing. This remains a Tokani demonstration and is not yet an official FNU platform. We hope to make this experience available to students as the engagement progresses.</p></div><a className="case-link" href="https://fnu-careers-app.vercel.app" target="_blank" rel="noreferrer">View the Tokani demonstration <Arrow /></a></div></article>
-      <div className="education-outcome"><p className="eyebrow blue">What this work demonstrates</p><div><article><h4>Human-centred discovery</h4><p>Beginning with a real family problem rather than a technology trend.</p></article><article><h4>Complex data transformation</h4><p>Turning prospectuses and requirements into structured, searchable information.</p></article><article><h4>Privacy-conscious design</h4><p>Useful guidance without accounts, profiling or unnecessary personal data.</p></article><article><h4>Institution-ready adaptation</h4><p>Taking a community platform concept and applying it to a specific stakeholder&apos;s information and outreach needs.</p></article></div></div>
-    </section>
-    <section className="approach section" id="approach"><div className="approach-top"><p className="eyebrow blue">How we work</p><h2>Good technology should make the next step clearer.</h2><p>We keep the process grounded, collaborative and easy to understand.</p></div><ol className="process"><li><span>01</span><h3>Listen</h3><p>We start with your business, your customers and the way things work today.</p></li><li><span>02</span><h3>Understand</h3><p>We find the friction: enquiries, follow-ups, records, bookings or workflow.</p></li><li><span>03</span><h3>Recommend</h3><p>We suggest the smallest solution that will genuinely make a difference.</p></li><li><span>04</span><h3>Build &amp; grow</h3><p>We implement, hand over clearly, and remain alongside you as needs evolve.</p></li></ol></section>
-    <section className="story section" id="story"><div className="story-mark"><img src="/brand/tokani-symbol-transparent.webp" alt="Tokani partnership symbol" width={280} height={280}/></div><div><p className="eyebrow brown">Our story</p><h2>Tokani means <em>friend.</em></h2><p className="lead">That is not just our name. It is how we want every relationship to feel.</p><p>Technology can do a lot for a business, but you should not have to become a technology expert just to make a good decision. We help you understand what makes sense now, explain it clearly, and build something useful—without the unnecessary complexity.</p><p className="quote">“Understand the problem. Keep the solution practical. Build something useful.”</p></div></section>
-    <section className="values"><div><span>We care deeply</span><span>We listen first</span><span>We keep it practical</span><span>We grow together</span></div></section>
-    <section className="contact" id="contact"><div className="contact-intro"><p className="eyebrow blue">Start a conversation</p><h2>What are you trying<br />to make easier?</h2><p>Tell us where your business is today. We&apos;ll help you work out the most useful next step.</p><p className="contact-location">Based in Suva and working with clients across Fiji. Enquiries are normally answered within one business day.</p><div className="contact-options"><a href="tel:+6799021622"><span>Call</span>+679 902 1622</a><a href="https://wa.me/6799021622" target="_blank" rel="noreferrer"><span>WhatsApp</span>+679 902 1622</a><a href="mailto:desmond@tokani.com.fj"><span>Email</span>desmond@tokani.com.fj</a></div></div><ContactForm /></section>
-    <footer><img src="/brand/tokani-logo-transparent.webp" alt="Tokani Technologies" width={220} height={56}/><p>Your friend in technology.</p><div><a href="#services">Services</a><a href="#work">Our work</a><a href="#story">Our story</a><a href="mailto:desmond@tokani.com.fj">Contact</a></div><small>© {new Date().getFullYear()} Tokani Technologies Pte Limited. Built in Fiji.</small></footer>
-  </main>;
+  return (
+    <>
+      <section className="home-hero wrap" id="top">
+        <div className="hero-copy">
+          <p className="eyebrow">Built in Fiji · Your friend in technology</p>
+          <h1>
+            Good technology.
+            <br />
+            <span>Built around you.</span>
+          </h1>
+          <p className="lead">
+            Websites, CRM and practical business systems for the way Fiji works.
+          </p>
+          <p className="hero-description">
+            Start with what your business needs today. We’ll help you make the
+            next step clearer.
+          </p>
+          <div className="actions">
+            <Link className="button" href="/contact">
+              Let’s talk about your business ↗
+            </Link>
+            <Link className="text-link" href="/our-work">
+              Explore our work →
+            </Link>
+          </div>
+        </div>
+        <div className="hero-visual">
+          <div className="hero-visual-label">
+            <span>From a business idea</span>
+            <span>to something useful ↘</span>
+          </div>
+          <ProjectImage
+            src="/portfolio/portfolio-unravel.jpg"
+            alt="Unravel Viti website developed by Tokani"
+            priority
+          />
+          <div className="hero-caption">
+            <div>
+              <span className="eyebrow">Selected work</span>
+              <strong>Unravel Viti</strong>
+              <span>Community-led tourism & transport</span>
+            </div>
+            <Link
+              href="/case-studies/unravel-viti"
+              aria-label="Read the Unravel Viti case study"
+            >
+              ↗
+            </Link>
+          </div>
+        </div>
+      </section>
+      <div className="principle-strip">
+        <div className="wrap">
+          <p>Understand the problem.</p>
+          <p>Keep the solution practical.</p>
+          <p>Build something useful.</p>
+        </div>
+      </div>
+      <section className="section wrap" id="services">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Yavu. Tubu. Qaqa.</p>
+            <h2>
+              A friend for
+              <br />
+              every stage.
+            </h2>
+          </div>
+          <p>
+            A strong foundation. More organised follow-up. A system built around
+            your organisation. Start where you are.
+          </p>
+        </div>
+        <div className="service-grid">
+          {services.map((s) => (
+            <article className={`service-card stage-${s.number}`} key={s.slug}>
+              <div className="card-top">
+                <span>{s.number}</span>
+                <span>{s.meaning}</span>
+              </div>
+              <h3>{s.stage}</h3>
+              <h4>{s.short}</h4>
+              <p>{s.includes.slice(0, 2).join(". ")}.</p>
+              <Link href={`/services/${s.slug}`} className="text-link">
+                {s.number === "01"
+                  ? "Websites & digital foundations"
+                  : s.number === "02"
+                    ? "CRM & business workflows"
+                    : "Custom systems & applications"}{" "}
+                ↗
+              </Link>
+            </article>
+          ))}
+        </div>
+        <Link className="section-link" href="/services">
+          Compare services and starting prices →
+        </Link>
+      </section>
+      <section className="section work-band" id="work">
+        <div className="wrap">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">Selected work</p>
+              <h2>
+                Local businesses.
+                <br />
+                Thoughtful digital work.
+              </h2>
+            </div>
+            <Link className="text-link" href="/our-work">
+              View the portfolio ↗
+            </Link>
+          </div>
+          <div id="case-studies" className="project-grid home-projects">
+            {[projects[1], projects[2], projects[3]].map((p) => (
+              <ProjectCard key={p.slug} project={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section wrap product-summary" id="platforms">
+        <div>
+          <p className="eyebrow">Tokani products</p>
+          <h2>
+            Practical tools.
+            <br />
+            Real local context.
+          </h2>
+          <p className="lead">
+            From career exploration to managing transport, our own products
+            begin with the same question: what would make this easier?
+          </p>
+          <Link className="text-link" href="/products">
+            Explore products and their status ↗
+          </Link>
+        </div>
+        <div className="product-list">
+          <Link href="/products#travelops">
+            <span className="status">In development</span>
+            <h3>TravelOps</h3>
+            <p>Transport operations for operators and organisations.</p>
+            <span aria-hidden="true">↗</span>
+          </Link>
+          <Link href="/products#careers" id="education-case">
+            <span className="status">Public platform</span>
+            <h3>Tokani Careers</h3>
+            <p>Explore Fiji study and career pathways.</p>
+            <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+      </section>
+      <section className="about-band" id="story">
+        <div className="wrap about-summary" id="approach">
+          <div>
+            <p className="eyebrow">Tokani means friend</p>
+            <h2>
+              We begin with
+              <br />
+              the business.
+            </h2>
+          </div>
+          <div>
+            <p>
+              You should not have to become a technology expert to make a good
+              decision. We listen, explain the options and recommend what makes
+              sense—even when that means keeping things simple.
+            </p>
+            <Link className="text-link" href="/about">
+              Our story and how we work ↗
+            </Link>
+          </div>
+        </div>
+      </section>
+      <div id="contact">
+        <Cta />
+      </div>
+    </>
+  );
 }

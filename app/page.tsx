@@ -41,7 +41,7 @@ export default function Home() {
             <span>to something useful ↘</span>
           </div>
           <ProjectImage
-            src="/portfolio/portfolio-unravel.jpg"
+            src="/portfolio/unravel-home-20260920.jpg"
             alt="Unravel Viti website developed by Tokani"
             priority
           />

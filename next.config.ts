@@ -1,4 +1,21 @@
 import type { NextConfig } from "next";
+
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "font-src 'self' data:",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "frame-src 'self' https://vercel.live",
+  "img-src 'self' data: blob: https://vercel.live",
+  "object-src 'none'",
+  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com https://vercel.live",
+  "style-src 'self' 'unsafe-inline'",
+  "connect-src 'self' https://vitals.vercel-insights.com https://vercel.live",
+  "worker-src 'self' blob:",
+  "upgrade-insecure-requests",
+].join("; ");
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
@@ -19,6 +36,7 @@ const nextConfig: NextConfig = {
       {
         source: "/(.*)",
         headers: [
+          { key: "Content-Security-Policy", value: contentSecurityPolicy },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "DENY" },
@@ -31,4 +49,5 @@ const nextConfig: NextConfig = {
     ];
   },
 };
+
 export default nextConfig;

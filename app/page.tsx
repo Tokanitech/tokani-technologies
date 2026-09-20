@@ -91,7 +91,7 @@ export default function Home() {
               </div>
               <h3>{s.stage}</h3>
               <h4>{s.short}</h4>
-              <p>{s.includes.slice(0, 2).join(". ")}.</p>
+              <p>{s.cardSummary}</p>
               <Link href={`/services/${s.slug}`} className="text-link">
                 {s.number === "01"
                   ? "Websites & digital foundations"

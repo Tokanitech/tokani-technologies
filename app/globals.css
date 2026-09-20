@@ -1466,3 +1466,49 @@ a:hover {
 .case-screenshot { margin-block: 32px; }
 .case-screenshot img { display: block; width: 100%; height: auto; border: 1px solid #e1e4e2; }
 .case-screenshot figcaption { margin-top: 12px; font-size: 14px; color: #555; }
+
+
+.case-capabilities {
+  align-items: start;
+}
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 26px;
+}
+.capability-grid span {
+  display: block;
+  padding: 15px 17px;
+  border: 1px solid var(--line);
+  background: #fafafa;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.related-services {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.related-services .eyebrow {
+  margin-bottom: 12px;
+}
+.related-service-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+}
+.case-body .related-service-links .text-link {
+  margin-top: 0;
+}
+
+@media (max-width: 640px) {
+  .capability-grid {
+    grid-template-columns: 1fr;
+  }
+  .related-service-links {
+    display: grid;
+    gap: 14px;
+  }
+}

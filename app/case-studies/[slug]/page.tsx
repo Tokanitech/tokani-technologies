@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   Breadcrumbs,
@@ -9,10 +10,13 @@ import {
 } from "../../components/ui";
 import { caseStudies } from "../../lib/content";
 import { pageMetadata, siteUrl } from "../../lib/seo";
+
 export const dynamicParams = false;
+
 export function generateStaticParams() {
   return Object.keys(caseStudies).map((slug) => ({ slug }));
 }
+
 export async function generateMetadata({
   params,
 }: {
@@ -21,9 +25,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const p = caseStudies[slug];
   return p
-    ? pageMetadata(`${p.name} — Case Study`, p.intro, `/case-studies/${slug}`)
+    ? pageMetadata(
+        p.seoTitle,
+        p.seoDescription,
+        `/case-studies/${slug}`,
+        p.image,
+      )
     : {};
 }
+
 export default async function CaseStudy({
   params,
 }: {
@@ -32,6 +42,7 @@ export default async function CaseStudy({
   const { slug } = await params;
   const p = caseStudies[slug];
   if (!p) notFound();
+
   return (
     <>
       <div className="wrap">
@@ -42,20 +53,23 @@ export default async function CaseStudy({
           ]}
         />
       </div>
+
       <PageIntro
         eyebrow={`${p.name} · ${p.status}`}
         title={p.title}
         description={p.intro}
       />
+
       <div
         className={`wrap case-hero ${slug === "unravel-viti" ? "unravel-screenshots" : ""}`}
       >
         <ProjectImage
           src={p.image}
-          alt={`${p.name} ${"website developed by Tokani"}`}
+          alt={`${p.name} website developed by Tokani`}
           priority
         />
       </div>
+
       {slug === "unravel-viti" && (
         <figure className="wrap case-screenshot">
           <Image
@@ -65,9 +79,13 @@ export default async function CaseStudy({
             height={926}
             sizes="(max-width: 760px) 100vw, 1200px"
           />
-          <figcaption>Homepage and experiences page, captured from the Unravel Viti build on 20 September 2026.</figcaption>
+          <figcaption>
+            Homepage and experiences page, captured from the Unravel Viti build
+            on 20 September 2026.
+          </figcaption>
         </figure>
       )}
+
       <section className="section wrap case-body">
         <div className="split">
           <p className="eyebrow">The challenge</p>
@@ -76,6 +94,7 @@ export default async function CaseStudy({
             <p>{p.challenge}</p>
           </div>
         </div>
+
         <div className="split">
           <p className="eyebrow">What Tokani built</p>
           <ul className="outcome-list">
@@ -84,6 +103,33 @@ export default async function CaseStudy({
             ))}
           </ul>
         </div>
+
+        <div className="split case-capabilities">
+          <p className="eyebrow">Capabilities applied</p>
+          <div>
+            <h2>What the project required.</h2>
+            <div className="capability-grid">
+              {p.capabilities.map((capability) => (
+                <span key={capability}>{capability}</span>
+              ))}
+            </div>
+            <div className="related-services">
+              <p className="eyebrow">Related Tokani services</p>
+              <div className="related-service-links">
+                {p.relatedServices.map((service) => (
+                  <Link
+                    className="text-link"
+                    href={service.href}
+                    key={service.href}
+                  >
+                    {service.label} ↗
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="split">
           <p className="eyebrow">Delivery outcome</p>
           <div>
@@ -107,18 +153,21 @@ export default async function CaseStudy({
           </div>
         </div>
       </section>
+
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: `${p.name}: ${p.title}`,
-          description: p.intro,
+          headline: p.seoTitle,
+          description: p.seoDescription,
           mainEntityOfPage: `${siteUrl}/case-studies/${slug}`,
           image: `${siteUrl}${p.image}`,
+          about: p.capabilities,
           author: { "@id": `${siteUrl}/#organisation` },
           publisher: { "@id": `${siteUrl}/#organisation` },
         }}
       />
+
       <Cta title="Your business deserves the same level of thought." />
     </>
   );

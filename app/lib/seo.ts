@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+
 export const siteUrl = "https://www.tokani.com.fj";
 export const preview = process.env.VERCEL_ENV === "preview";
+
 export function pageMetadata(
   title: string,
   description: string,
   path: string,
+  image = "/brand/Tokani_OpenGraph_1200x630.webp",
 ): Metadata {
   return {
     title,
@@ -19,10 +22,11 @@ export function pageMetadata(
       locale: "en_FJ",
       images: [
         {
-          url: "/brand/Tokani_OpenGraph_1200x630.webp",
-          width: 1200,
-          height: 630,
-          alt: "Tokani Technologies — Your friend in technology",
+          url: image,
+          alt:
+            image === "/brand/Tokani_OpenGraph_1200x630.webp"
+              ? "Tokani Technologies — Your friend in technology"
+              : `${title} — Tokani Technologies case study`,
         },
       ],
     },
@@ -30,7 +34,7 @@ export function pageMetadata(
       card: "summary_large_image",
       title,
       description,
-      images: ["/brand/Tokani_OpenGraph_1200x630.webp"],
+      images: [image],
     },
   };
 }

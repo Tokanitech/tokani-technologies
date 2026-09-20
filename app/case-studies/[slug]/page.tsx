@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   Breadcrumbs,
@@ -47,7 +48,7 @@ export default async function CaseStudy({
         description={p.intro}
       />
       <div
-        className={`wrap case-hero ${""}`}
+        className={`wrap case-hero ${slug === "unravel-viti" ? "unravel-screenshots" : ""}`}
       >
         <ProjectImage
           src={p.image}
@@ -55,6 +56,18 @@ export default async function CaseStudy({
           priority
         />
       </div>
+      {slug === "unravel-viti" && (
+        <figure className="wrap case-screenshot">
+          <Image
+            src="/portfolio/unravel-experiences-20260920.jpg"
+            alt="Current Unravel Viti experiences page featuring Fiji cultural tours from Suva"
+            width={1348}
+            height={926}
+            sizes="(max-width: 760px) 100vw, 1200px"
+          />
+          <figcaption>Homepage and experiences page, captured from the Unravel Viti build on 20 September 2026.</figcaption>
+        </figure>
+      )}
       <section className="section wrap case-body">
         <div className="split">
           <p className="eyebrow">The challenge</p>

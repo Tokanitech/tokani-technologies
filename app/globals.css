@@ -1460,3 +1460,9 @@ a:hover {
     animation: none !important;
   }
 }
+
+/* Preserve the complete current Unravel screenshots in the case study. */
+.case-hero.unravel-screenshots .project-image { aspect-ratio: 1348 / 926; }
+.case-screenshot { margin-block: 32px; }
+.case-screenshot img { display: block; width: 100%; height: auto; border: 1px solid #e1e4e2; }
+.case-screenshot figcaption { margin-top: 12px; font-size: 14px; color: #555; }

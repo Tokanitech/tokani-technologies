@@ -138,7 +138,7 @@ export const projects = [
     name: "Unravel Viti",
     category: "Tourism & transport",
     status: "Launch preparation",
-    image: "/portfolio/portfolio-unravel.jpg",
+    image: "/portfolio/unravel-home-20260920.jpg",
     description:
       "Turning a community-led tourism and transport vision into a clear digital storefront.",
     href: "/case-studies/unravel-viti",
@@ -250,7 +250,7 @@ export const caseStudies: Record<
     title: "A digital foundation for community-led tourism.",
     intro:
       "Business discovery, service structure and website development for a Fiji tourism and transport business.",
-    image: "/portfolio/portfolio-unravel.jpg",
+    image: "/portfolio/unravel-home-20260920.jpg",
     status: "Launch preparation",
     challenge:
       "Unravel’s vision spans transport, cultural experiences and community opportunity. The first website needed to give customers a clear starting point without forcing every future ambition into launch.",

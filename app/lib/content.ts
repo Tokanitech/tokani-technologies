@@ -258,7 +258,7 @@ export const caseStudies: Record<
 > = {
   "unravel-viti": {
     name: "Unravel Viti",
-    title: "A digital foundation for community-led tourism.",
+    title: "Unravel Viti: a digital foundation for community-led tourism in Fiji.",
     intro:
       "Business discovery, service structure and website development for a Fiji tourism and transport business.",
     image: "/portfolio/unravel-home-20260920.jpg",
@@ -294,7 +294,7 @@ export const caseStudies: Record<
   },
   vatudei: {
     name: "Vatudei Travel",
-    title: "Make the first step feel clearer.",
+    title: "Vatudei Travel: a clearer digital journey for visa and travel customers.",
     intro:
       "Website design and guided service navigation for a women-led travel and visa business in Fiji.",
     image: "/portfolio/portfolio-vatudei.jpg",
@@ -329,7 +329,7 @@ export const caseStudies: Record<
   },
   dfc: {
     name: "Discount Flight Centre",
-    title: "Turn travel complexity into a clearer customer decision.",
+    title: "Discount Flight Centre: a Fiji travel website with interactive planning tools.",
     intro:
       "Website, interactive fare guidance and travel-planning tools for Discount Flight Centre in Fiji.",
     image: "/portfolio/portfolio-dfc.jpg",
@@ -366,7 +366,7 @@ export const caseStudies: Record<
   },
   jad: {
     name: "JAD Travel",
-    title: "From first build to second-generation revamp.",
+    title: "JAD Travel website: from original build to second-generation revamp.",
     intro:
       "Original website development and a second-generation revamp for JAD Travel, a long-established Suva travel agency serving corporate, group, medical and specialist travel customers.",
     image: "/portfolio/portfolio-jad.jpg",

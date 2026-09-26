@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Breadcrumbs, Cta, PageIntro } from "../components/ui";
 import ProjectCard from "../components/project-card";
 import { projects } from "../lib/content";
@@ -19,6 +20,17 @@ export default function Work() {
         description="Client websites, Tokani products and focused demonstrations. Each project is labelled so you can see what has been built and where it stands."
       />
       <section className="section wrap compact-top">
+        <div className="notice">
+          <h2>Looking for the detail behind the work?</h2>
+          <p>
+            Our client case studies explain the business problem, what Tokani
+            built, the capabilities applied and the boundaries of what is being
+            claimed.
+          </p>
+          <Link className="text-link" href="/case-studies">
+            Browse detailed case studies →
+          </Link>
+        </div>
         <div className="project-grid">
           {projects.map((p) => (
             <ProjectCard key={p.slug} project={p} />

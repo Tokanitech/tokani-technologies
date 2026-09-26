@@ -30,6 +30,7 @@ export async function generateMetadata({
         p.seoDescription,
         `/case-studies/${slug}`,
         p.image,
+        "article",
       )
     : {};
 }
@@ -42,6 +43,15 @@ export default async function CaseStudy({
   const { slug } = await params;
   const p = caseStudies[slug];
   if (!p) notFound();
+
+  const relatedCaseStudies = Object.entries(caseStudies)
+    .filter(([relatedSlug]) => relatedSlug !== slug)
+    .slice(0, 3);
+  const updatedLabel = new Intl.DateTimeFormat("en-FJ", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(p.dateModified));
 
   return (
     <>
@@ -58,7 +68,11 @@ export default async function CaseStudy({
         eyebrow={`${p.name} · ${p.status}`}
         title={p.title}
         description={p.intro}
-      />
+      >
+        <p className="case-updated">
+          Case study updated <time dateTime={p.dateModified}>{updatedLabel}</time>
+        </p>
+      </PageIntro>
 
       <div
         className={`wrap case-hero ${slug === "unravel-viti" ? "unravel-screenshots" : ""}`}
@@ -214,16 +228,54 @@ export default async function CaseStudy({
         </div>
       </section>
 
+      <section className="section wrap related-case-studies" aria-labelledby="related-work-heading">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Related case studies</p>
+            <h2 id="related-work-heading">More work from Fiji businesses.</h2>
+          </div>
+          <Link className="text-link" href="/case-studies">
+            View all case studies →
+          </Link>
+        </div>
+        <div className="related-case-grid">
+          {relatedCaseStudies.map(([relatedSlug, related]) => (
+            <article key={relatedSlug} className="related-case-card">
+              <p className="eyebrow">{related.name}</p>
+              <h3>{related.title}</h3>
+              <p>{related.intro}</p>
+              <Link className="text-link" href={`/case-studies/${relatedSlug}`}>
+                Read the {related.name} case study →
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "Article",
           headline: p.seoTitle,
           description: p.seoDescription,
+          url: `${siteUrl}/case-studies/${slug}`,
           mainEntityOfPage: `${siteUrl}/case-studies/${slug}`,
           image: `${siteUrl}${p.image}`,
-          about: p.capabilities,
-          author: { "@id": `${siteUrl}/#organisation` },
+          dateModified: p.dateModified,
+          inLanguage: "en-FJ",
+          articleSection: "Client case studies",
+          about: p.capabilities.map((name) => ({ "@type": "Thing", name })),
+          isPartOf: {
+            "@type": "CollectionPage",
+            "@id": `${siteUrl}/case-studies/#collection`,
+            name: "Tokani Technologies case studies",
+          },
+          author: {
+            "@id": `${siteUrl}/#organisation`,
+            "@type": "Organization",
+            name: "Tokani Technologies",
+            url: siteUrl,
+          },
           publisher: { "@id": `${siteUrl}/#organisation` },
         }}
       />

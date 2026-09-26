@@ -134,6 +134,7 @@ export function Footer() {
           <Link href="/services">Services</Link>
           <Link href="/products">Products</Link>
           <Link href="/our-work">Our work</Link>
+          <Link href="/case-studies">Case studies</Link>
           <Link href="/about">Our story & approach</Link>
         </nav>
         <div>

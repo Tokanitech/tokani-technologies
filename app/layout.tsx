@@ -19,7 +19,17 @@ export const metadata: Metadata = {
   icons: { icon: "/brand/favicon.ico", apple: "/brand/apple-touch-icon.png" },
   robots: preview
     ? { index: false, follow: false }
-    : { index: true, follow: true },
+    : {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      },
 };
 export default function RootLayout({
   children,
@@ -36,6 +46,17 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <Measurement />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "@id": `${siteUrl}/#website`,
+            name: "Tokani Technologies",
+            url: siteUrl,
+            inLanguage: "en-FJ",
+            publisher: { "@id": `${siteUrl}/#organisation` },
+          }}
+        />
         <JsonLd
           data={{
             "@context": "https://schema.org",

@@ -8,6 +8,7 @@ export function pageMetadata(
   description: string,
   path: string,
   image = "/brand/Tokani_OpenGraph_1200x630.webp",
+  type: "website" | "article" = "website",
 ): Metadata {
   return {
     title,
@@ -18,7 +19,7 @@ export function pageMetadata(
       description,
       url: `${siteUrl}${path}`,
       siteName: "Tokani Technologies",
-      type: "website",
+      type,
       locale: "en_FJ",
       images: [
         {

@@ -1614,3 +1614,18 @@ a:hover {
     grid-template-columns: 1fr;
   }
 }
+
+
+.service-case-links {
+  display: grid;
+  justify-items: start;
+  margin-top: 32px;
+}
+
+.service-case-links .section-link {
+  margin-top: 12px;
+}
+
+.service-case-links .text-link {
+  margin-top: 22px;
+}

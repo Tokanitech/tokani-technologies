@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 const base=process.env.TEST_BASE_URL||'http://localhost:3000';
-const pages=['/','/services','/services/website-development','/services/crm-workflows','/services/custom-systems','/products','/our-work','/about','/contact','/privacy','/case-studies/unravel-viti','/case-studies/vatudei','/case-studies/dfc','/case-studies/jad'];
+const pages=['/','/services','/services/website-development','/services/crm-workflows','/services/custom-systems','/products','/our-work','/case-studies','/about','/contact','/privacy','/case-studies/unravel-viti','/case-studies/vatudei','/case-studies/dfc','/case-studies/jad'];
 const results=new Map();
 for(const path of pages){test(`${path}: rendered content, metadata and valid internal links`,async()=>{const r=await fetch(base+path);assert.equal(r.status,200);const html=await r.text();results.set(path,html);assert.equal((html.match(/<h1(?:\s|>)/g)||[]).length,1);const canonical=html.match(/rel="canonical" href="([^"]+)"/);assert.ok(canonical);assert.equal(new URL(canonical[1]).href,new URL(path,"https://www.tokani.com.fj").href);assert.match(html,/<meta name="description" content="[^"]+"/);assert.match(html,/<title>[^<]+<\/title>/);assert.ok(!html.includes('name="robots" content="noindex'));assert.match(html,/application\/ld\+json/);assert.ok(!html.includes('Zoho'));for(const match of html.matchAll(/href="(\/[^"?#]*)(?:[^"#]*)(?:#[^"]*)?"/g)){const href=match[1];if(href.startsWith('/_next')||href.startsWith('/brand')||href.startsWith('/portfolio'))continue;assert.ok(pages.includes(href),`unexpected internal link ${href}`);}assert.ok(!html.includes('/_vercel/insights/script.js'));});}
 test('sitemap lists every intended public page exactly once',async()=>{const r=await fetch(base+'/sitemap.xml');assert.equal(r.status,200);const s=await r.text();const urls=[...s.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);assert.equal(urls.length,pages.length);assert.equal(new Set(urls).size,pages.length);for(const p of pages)assert.ok(urls.includes('https://www.tokani.com.fj'+(p==='/'?'':p)));});
@@ -16,3 +16,39 @@ test('service pages state the locked first-year value clearly',async()=>{const s
 test('DFC case study explains the interactive fare and planning work without claiming live fares',async()=>{const s=await(await fetch(base+'/case-studies/dfc')).text();assert.match(s,/Fare Pick Helper/);assert.match(s,/Before You Travel Planner/);assert.match(s,/general guidance rather than a live quote/);assert.match(s,/href="\/services\/custom-systems"/);assert.match(s,/portfolio\/portfolio-dfc\.jpg/);});
 
 test('JAD case study credits the original build and shows current visual evidence without relying on the About history section',async()=>{const s=await(await fetch(base+'/case-studies/jad')).text();assert.match(s,/original JAD website/);assert.match(s,/second-generation revamp/);assert.match(s,/jad-team-current\.webp/);assert.match(s,/jad-storefront\.jpg/);assert.match(s,/deliberately does not use that section as visual evidence/);});
+
+
+test('case-study hub and detail pages expose strong discovery signals',async()=>{
+  const hub=await(await fetch(base+'/case-studies')).text();
+  assert.match(hub,/Fiji businesses\. Real digital work\./);
+  for(const slug of ['unravel-viti','vatudei','dfc','jad']){
+    assert.match(hub,new RegExp(`href="/case-studies/${slug}"`));
+    const html=await(await fetch(base+`/case-studies/${slug}`)).text();
+    assert.match(html,/Case study updated/);
+    assert.match(html,/"dateModified":"2026-09-27T11:00:00\+12:00"/);
+    assert.match(html,/"articleSection":"Client case studies"/);
+    assert.match(html,/property="og:type" content="article"/);
+    assert.match(html,/Related case studies/);
+  }
+});
+
+test('JAD case-study metadata targets Fiji website and revamp intent',async()=>{
+  const s=await(await fetch(base+'/case-studies/jad')).text();
+  assert.match(s,/<title>JAD Travel Website Build &amp; Revamp — Fiji \| Tokani Technologies<\/title>/);
+  assert.match(s,/long-established Suva travel agency/);
+  assert.match(s,/Fiji corporate travel/);
+  assert.match(s,/structured data and route-specific search metadata/);
+});
+
+test('service pages link into relevant case-study clusters',async()=>{
+  const websites=await(await fetch(base+'/services/website-development')).text();
+  for(const slug of ['jad','unravel-viti','vatudei']) assert.match(websites,new RegExp(`href="/case-studies/${slug}"`));
+  const custom=await(await fetch(base+'/services/custom-systems')).text();
+  assert.match(custom,/href="\/case-studies\/dfc"/);
+  assert.match(custom,/"@type":"Service"/);
+});
+
+test('production robots metadata permits rich Google previews',async()=>{
+  const s=await(await fetch(base+'/case-studies/jad')).text();
+  assert.match(s,/name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"/);
+});

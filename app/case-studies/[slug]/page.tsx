@@ -51,6 +51,7 @@ export default async function CaseStudy({
     day: "numeric",
     month: "long",
     year: "numeric",
+    timeZone: "Pacific/Fiji",
   }).format(new Date(p.dateModified));
 
   return (

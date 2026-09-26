@@ -35,6 +35,8 @@ test('case-study hub and detail pages expose strong discovery signals',async()=>
 test('JAD case-study metadata targets Fiji website and revamp intent',async()=>{
   const s=await(await fetch(base+'/case-studies/jad')).text();
   assert.match(s,/<title>JAD Travel Website Build &amp; Revamp — Fiji \| Tokani Technologies<\/title>/);
+  assert.match(s,/JAD Travel website: from original build to second-generation revamp\./);
+  assert.match(s,/>27 September 2026<\/time>/);
   assert.match(s,/long-established Suva travel agency/);
   assert.match(s,/Fiji corporate travel/);
   assert.match(s,/structured data and route-specific search metadata/);

@@ -30,6 +30,7 @@ export async function generateMetadata({
         p.seoDescription,
         `/case-studies/${slug}`,
         p.image,
+        "article",
       )
     : {};
 }

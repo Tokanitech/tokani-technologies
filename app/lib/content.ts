@@ -178,11 +178,11 @@ export const projects = [
   {
     slug: "jad",
     name: "JAD Travel",
-    category: "Corporate & group travel",
-    status: "Website redesign",
+    category: "Corporate & specialist travel",
+    status: "Original build & strategic revamp",
     image: "/portfolio/portfolio-jad.jpg",
     description:
-      "A digital presence built around specialist knowledge, real people and the organisation’s history.",
+      "From the original custom build to a second-generation revamp shaped by what the first version taught us.",
     href: "/case-studies/jad",
     external: false,
     label: "Read the case study",
@@ -362,37 +362,38 @@ export const caseStudies: Record<
   },
   jad: {
     name: "JAD Travel",
-    title: "Put the people, heritage and expertise at the centre.",
+    title: "From first build to second-generation revamp.",
     intro:
-      "A website redesign shaped around JAD’s corporate, group and specialist travel expertise.",
+      "Tokani designed and developed JAD’s original modern website, then returned to review, challenge and substantially refine the platform.",
     image: "/portfolio/portfolio-jad.jpg",
-    status: "Website redesign",
+    status: "Original build & strategic revamp",
     challenge:
-      "A general travel website did not communicate enough of the organisation’s history, specialist knowledge, corporate coordination approach or the people customers would work with.",
+      "The first build gave JAD a modern digital foundation, but launch also gave us a real product to assess. The next question was whether the site represented the business as clearly as it could: its specialist travel work, experienced consultants, customer pathways and the standard expected of a long-established Fiji travel business.",
     work: [
-      "Reframed the website around JAD’s heritage and expertise in corporate, group and specialist travel support.",
-      "Placed current team members and their areas of expertise across relevant service pages instead of limiting credibility to a generic About page.",
-      "Added a clearer corporate travel coordination workflow so organisational customers can understand how JAD approaches more complex travel.",
-      "Developed the JAD Travel Desk knowledge hub and original editorial guides to turn specialist knowledge into useful customer content.",
-      "Standardised responsive page presentation and search metadata across the expanded site structure.",
+      "Designed and developed the original JAD website as a custom React, TypeScript, Vite and Tailwind build rather than a template-based site.",
+      "Reviewed our own first version against the way JAD actually works, customer needs, regional competitors and stronger international travel websites.",
+      "Reduced generic travel-agency content and strengthened the site around corporate, group, medical-travel, visa and specialist travel pathways.",
+      "Made real consultants and their areas of expertise more visible across relevant service pages so customers can see the people behind the service.",
+      "Refined responsive layouts, typography, enquiry journeys, search metadata and the production workflow as the platform matured.",
+      "Kept the revamp iterative: improve what evidence justified, preserve what worked and avoid adding complexity simply because the technology allowed it.",
     ],
     capabilities: [
-      "Content strategy",
-      "Corporate travel information architecture",
-      "Editorial SEO content",
-      "Team-led credibility",
+      "Digital product lifecycle",
+      "Business & content strategy",
+      "Travel-industry UX",
       "Responsive website development",
+      "SEO & content architecture",
+      "Iterative technical refinement",
     ],
     relatedServices: [
       { label: "Yavu — Websites & digital foundations", href: "/services/website-development" },
     ],
     outcome:
-      "A professional digital presence that gives prospective customers a clearer understanding of JAD’s history, people, service areas and specialist travel knowledge.",
+      "The result is not simply a redesigned website. It is a documented progression from first build to a more focused second-generation platform, showing Tokani’s ability to launch, review its own work critically and improve a digital product as understanding of the business deepens.",
     boundary:
-      "This case study describes website and content delivery. Commercial performance and search improvements require separate measurement.",
-    seoTitle: "JAD Travel — Corporate Travel Website Case Study",
+      "This case study describes the design, development and revamp work delivered. It does not claim a measured increase in sales, enquiries or search rankings. JAD’s About section is still being refined, so this case study deliberately does not use that section as visual evidence.",
+    seoTitle: "JAD Travel — Original Website Build & Revamp Case Study",
     seoDescription:
-      "A Fiji corporate travel website case study covering service architecture, team expertise, editorial content and a clearer organisational travel workflow.",
+      "See how Tokani designed JAD Travel’s original modern website, reviewed the first version and developed a more focused second-generation revamp.",
     url: "https://jad-site-build.vercel.app",
-  },
-};
+  },};

@@ -252,6 +252,7 @@ export const caseStudies: Record<
     boundary: string;
     seoTitle: string;
     seoDescription: string;
+    dateModified: string;
     url?: string;
   }
 > = {
@@ -285,9 +286,10 @@ export const caseStudies: Record<
       "A coherent digital storefront that presents Unravel’s transport and cultural experiences through a clearer customer journey, with a technical foundation that can support launch and later service growth.",
     boundary:
       "This case study describes the website work delivered. Final domain, contact channels, enquiry delivery and launch arrangements need confirmation before it is represented as a fully operational booking service. Booking growth and conversion improvements have not been measured here.",
-    seoTitle: "Unravel Viti — Fiji Tourism Website Case Study",
+    seoTitle: "Unravel Viti Tourism Website — Fiji",
     seoDescription:
-      "See how Tokani structured Unravel Viti’s Fiji tourism and transport services into a responsive website with authentic imagery and local SEO foundations.",
+      "See how Tokani structured a Fiji tourism and transport business into a responsive website with authentic imagery, clear enquiries and local SEO foundations.",
+    dateModified: "2026-09-27T11:00:00+12:00",
     url: "https://unravel-viti.vercel.app",
   },
   vatudei: {
@@ -320,9 +322,10 @@ export const caseStudies: Record<
       "A website build and working service-navigation interface that can support a clearer first conversation with the Vatudei team while leaving unnecessary appointment complexity out of the first release.",
     boundary:
       "The project is in development. The agreed next step is a simple enquiry-led journey; appointment scheduling is deferred. This project does not claim live appointment booking, production email delivery or visa-eligibility assessment.",
-    seoTitle: "Vatudei Travel — Travel & Visa Website Case Study",
+    seoTitle: "Vatudei Travel & Visa Website — Fiji",
     seoDescription:
       "A Fiji travel and visa website case study covering service structure, guided navigation, responsive design and a deliberately simple enquiry-led customer journey.",
+    dateModified: "2026-09-27T11:00:00+12:00",
   },
   dfc: {
     name: "Discount Flight Centre",
@@ -355,26 +358,27 @@ export const caseStudies: Record<
       "A more useful travel website that combines service discovery with practical decision-support tools, while keeping live pricing, availability and final fare-rule confirmation with DFC consultants.",
     boundary:
       "The fare guide is general guidance rather than a live quote or guarantee of availability. Airline rules vary by route, operating carrier, fare basis and travel date. The outcomes here describe delivered design, content and interactive functionality; no increase in sales, search rankings or enquiry conversion is claimed.",
-    seoTitle: "Discount Flight Centre — Fare Guide & Travel Website Case Study",
+    seoTitle: "DFC Travel Website & Fare Tools — Fiji",
     seoDescription:
-      "See how Tokani combined a Fiji travel website with an interactive fare guide, enquiry context and a browser-based before-you-travel planning tool.",
+      "See how Tokani combined a Fiji travel website with interactive fare guidance, enquiry context and a browser-based before-you-travel planning tool.",
+    dateModified: "2026-09-27T11:00:00+12:00",
     url: "https://dfc-main-website.vercel.app",
   },
   jad: {
     name: "JAD Travel",
     title: "From first build to second-generation revamp.",
     intro:
-      "Tokani designed and developed JAD’s original modern website, then returned to review, challenge and substantially refine the platform.",
+      "Original website development and a second-generation revamp for JAD Travel, a long-established Suva travel agency serving corporate, group, medical and specialist travel customers.",
     image: "/portfolio/portfolio-jad.jpg",
     status: "Original build & strategic revamp",
     challenge:
-      "The first build gave JAD a modern digital foundation, but launch also gave us a real product to assess. The next question was whether the site represented the business as clearly as it could: its specialist travel work, experienced consultants, customer pathways and the standard expected of a long-established Fiji travel business.",
+      "The first build gave JAD a modern digital foundation, but launch also gave us a real product to assess. The next question was whether the website represented a long-established Fiji travel business as clearly as it could: corporate and group travel, medical-travel coordination, visa assistance, specialist consultants and the customer pathways that connect those services.",
     work: [
       "Designed and developed the original JAD website as a custom React, TypeScript, Vite and Tailwind build rather than a template-based site.",
       "Reviewed our own first version against the way JAD actually works, customer needs, regional competitors and stronger international travel websites.",
-      "Reduced generic travel-agency content and strengthened the site around corporate, group, medical-travel, visa and specialist travel pathways.",
+      "Reduced generic travel-agency content and strengthened the information architecture around Fiji corporate travel, group travel, medical-travel coordination, visa assistance and specialist customer pathways.",
       "Made real consultants and their areas of expertise more visible across relevant service pages so customers can see the people behind the service.",
-      "Refined responsive layouts, typography, enquiry journeys, search metadata and the production workflow as the platform matured.",
+      "Refined responsive layouts, typography, enquiry journeys, page titles, descriptions, structured data and route-specific search metadata as the platform matured.",
       "Kept the revamp iterative: improve what evidence justified, preserve what worked and avoid adding complexity simply because the technology allowed it.",
     ],
     capabilities: [
@@ -389,12 +393,13 @@ export const caseStudies: Record<
       { label: "Yavu — Websites & digital foundations", href: "/services/website-development" },
     ],
     outcome:
-      "The result is not simply a redesigned website. It is a documented progression from first build to a more focused second-generation platform, showing Tokani’s ability to launch, review its own work critically and improve a digital product as understanding of the business deepens.",
+      "The result is not simply a redesigned travel website. It is a documented progression from first build to a more focused second-generation platform for a Suva travel agency, showing Tokani’s ability to launch, review its own work critically and improve a digital product as understanding of the business deepens.",
     boundary:
       "This case study describes the design, development and revamp work delivered. It does not claim a measured increase in sales, enquiries or search rankings. JAD’s About section is still being refined, so this case study deliberately does not use that section as visual evidence.",
-    seoTitle: "JAD Travel — Original Website Build & Revamp Case Study",
+    seoTitle: "JAD Travel Website Build & Revamp — Fiji",
     seoDescription:
-      "See how Tokani designed JAD Travel’s original modern website, reviewed the first version and developed a more focused second-generation revamp.",
+      "JAD Travel case study: original website development, strategic revamp, corporate travel UX, responsive design and SEO for a long-established Suva travel agency.",
+    dateModified: "2026-09-27T11:00:00+12:00",
     url: "https://jad-site-build.vercel.app",
   },
 };

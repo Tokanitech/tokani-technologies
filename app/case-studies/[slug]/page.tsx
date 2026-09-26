@@ -70,6 +70,66 @@ export default async function CaseStudy({
         />
       </div>
 
+      {slug === "jad" && (
+        <>
+          <p className="wrap case-hero-caption">
+            <strong>Current JAD website:</strong> the second-generation revamp
+            builds on Tokani’s original custom website rather than replacing a
+            third-party or inherited site.
+          </p>
+
+          <section
+            className="wrap case-visual-story"
+            aria-labelledby="jad-visual-heading"
+          >
+            <div className="case-visual-heading">
+              <p className="eyebrow">Visual evidence</p>
+              <h2 id="jad-visual-heading">What changed beyond the interface.</h2>
+              <p>
+                The revamp uses JAD’s real people and physical presence to make
+                the digital experience feel connected to the business customers
+                actually deal with.
+              </p>
+            </div>
+
+            <div className="case-photo-grid">
+              <figure className="case-photo-card">
+                <div className="case-photo-frame">
+                  <Image
+                    src="/portfolio/jad-team-current.webp"
+                    alt="Current JAD Travel team used as authentic website photography"
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                </div>
+                <figcaption>
+                  <strong>Real people, not generic travel imagery.</strong>
+                  Consultants and their expertise were brought forward across
+                  the site so customers can see who sits behind the service.
+                </figcaption>
+              </figure>
+
+              <figure className="case-photo-card">
+                <div className="case-photo-frame">
+                  <Image
+                    src="/portfolio/jad-storefront.jpg"
+                    alt="JAD Travel storefront in Suva used as authentic website photography"
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                </div>
+                <figcaption>
+                  <strong>A real Fiji business with a visible local presence.</strong>
+                  Storefront photography grounds the website in JAD’s actual
+                  Suva operation rather than presenting an anonymous online
+                  travel brand.
+                </figcaption>
+              </figure>
+            </div>
+          </section>
+        </>
+      )}
+
       {slug === "unravel-viti" && (
         <figure className="wrap case-screenshot">
           <Image

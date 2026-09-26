@@ -1598,7 +1598,7 @@ a:hover {
   border: 1px solid var(--line);
   border-radius: 1rem;
   padding: 1.4rem;
-  background: var(--white);
+  background: #fff;
 }
 
 .related-case-card h3 {

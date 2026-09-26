@@ -396,4 +396,5 @@ export const caseStudies: Record<
     seoDescription:
       "See how Tokani designed JAD Travel’s original modern website, reviewed the first version and developed a more focused second-generation revamp.",
     url: "https://jad-site-build.vercel.app",
-  },};
+  },
+};

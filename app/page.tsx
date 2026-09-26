@@ -118,9 +118,14 @@ export default function Home() {
                 Thoughtful digital work.
               </h2>
             </div>
-            <Link className="text-link" href="/our-work">
-              View the portfolio ↗
-            </Link>
+            <div className="related-service-links">
+              <Link className="text-link" href="/case-studies">
+                Read the case studies →
+              </Link>
+              <Link className="text-link" href="/our-work">
+                View the full portfolio ↗
+              </Link>
+            </div>
           </div>
           <div id="case-studies" className="project-grid home-projects">
             {[projects[1], projects[2], projects[3]].map((p) => (

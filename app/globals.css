@@ -1467,6 +1467,59 @@ a:hover {
 .case-screenshot img { display: block; width: 100%; height: auto; border: 1px solid #e1e4e2; }
 .case-screenshot figcaption { margin-top: 12px; font-size: 14px; color: #555; }
 
+.case-hero-caption {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.case-hero-caption strong {
+  color: #222;
+}
+.case-visual-story {
+  margin-top: 52px;
+  margin-bottom: 12px;
+}
+.case-visual-heading {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+.case-visual-heading h2 {
+  margin-bottom: 14px;
+}
+.case-visual-heading p:not(.eyebrow) {
+  color: var(--muted);
+}
+.case-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.case-photo-card {
+  margin: 0;
+}
+.case-photo-frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #f2f3f2;
+  border: 1px solid #e1e4e2;
+}
+.case-photo-frame img {
+  object-fit: cover;
+}
+.case-photo-card figcaption {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.case-photo-card figcaption strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #222;
+}
+
 
 .case-capabilities {
   align-items: start;
@@ -1504,6 +1557,16 @@ a:hover {
 }
 
 @media (max-width: 640px) {
+  .case-visual-story {
+    margin-top: 38px;
+  }
+  .case-photo-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .case-photo-frame {
+    aspect-ratio: 4 / 3;
+  }
   .capability-grid {
     grid-template-columns: 1fr;
   }

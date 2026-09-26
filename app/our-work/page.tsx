@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Breadcrumbs, Cta, PageIntro } from "../components/ui";
 import ProjectCard from "../components/project-card";
 import { projects } from "../lib/content";
@@ -26,9 +27,9 @@ export default function Work() {
             built, the capabilities applied and the boundaries of what is being
             claimed.
           </p>
-          <a className="text-link" href="/case-studies">
+          <Link className="text-link" href="/case-studies">
             Browse detailed case studies →
-          </a>
+          </Link>
         </div>
         <div className="project-grid">
           {projects.map((p) => (

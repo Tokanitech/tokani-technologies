@@ -290,7 +290,7 @@ export const caseStudies: Record<
     seoDescription:
       "See how Tokani structured a Fiji tourism and transport business into a responsive website with authentic imagery, clear enquiries and local SEO foundations.",
     dateModified: "2026-09-27T11:00:00+12:00",
-    url: "https://unravel-viti.vercel.app",
+    url: "https://unravelfiji.com.fj/",
   },
   vatudei: {
     name: "Vatudei Travel",

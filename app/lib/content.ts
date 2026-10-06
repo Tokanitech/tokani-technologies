@@ -400,7 +400,7 @@ export const caseStudies: Record<
     seoDescription:
       "JAD Travel website revamp in Fiji: before-and-after screenshots explain changes to corporate travel content, real team imagery, medical-travel guidance and enquiries.",
     dateModified: "2026-10-06T12:26:00+12:00",
-    url: "https://jad-site-build.vercel.app",
+    url: "https://jadtravelfiji.com/",
   },
 };
 

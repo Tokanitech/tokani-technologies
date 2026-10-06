@@ -115,7 +115,19 @@ a:hover {
 .case-summary h2 { font-size: clamp(24px, 3vw, 36px); margin-bottom: 16px; }
 .case-section-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
 .case-section-links a { padding: 10px 14px; min-height: 44px; border: 1px solid var(--line); background: #fff; font-weight: 600; }
-.jad-comparison h3, #jad-availability-heading, #case-delivery-heading { scroll-margin-top: 115px; }
+.jad-comparison h3, #jad-availability-heading, #case-delivery-heading, #jad-enquiries-heading, #jad-technology-heading { scroll-margin-top: 115px; }
+.jad-implementation h2 { margin-bottom: 20px; }
+.jad-enquiry-flow { padding-left: 24px; margin-block: 28px; }
+.jad-enquiry-flow li { padding-left: 8px; margin-bottom: 16px; max-width: 85ch; }
+.jad-enquiry-flow strong { display: block; }
+.jad-form-types, .jad-technology-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-block: 28px; }
+.jad-form-types > div, .jad-technology-grid > div { padding: 20px; background: var(--mist); }
+.jad-form-types h3, .jad-technology-grid dt { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.jad-form-types p, .jad-technology-grid dd { font-size: 15px; line-height: 1.65; }
+.jad-technology-grid dd { margin: 0; }
+@media (max-width: 640px) {
+  .jad-form-types, .jad-technology-grid { grid-template-columns: 1fr; }
+}
 .wrap {
   width: min(var(--max), calc(100% - 96px));
   margin-inline: auto;

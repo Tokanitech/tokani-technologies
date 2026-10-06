@@ -383,6 +383,8 @@ export const caseStudies: Record<
       "Made real consultants and their areas of expertise more visible across relevant service pages so customers can see the people behind the service.",
       "Refined responsive layouts, typography, enquiry journeys, page titles, descriptions, structured data and route-specific search metadata as the platform matured.",
       "Kept the revamp iterative: improve what evidence justified, preserve what worked and avoid adding complexity simply because the technology allowed it.",
+      "Connected eight enquiry types, including medical, visa, group and contact forms, to Resend notifications for the reservations team and separate branded customer acknowledgements.",
+      "Integrated Cloudflare Turnstile token verification on the server, production hostname checks, schema validation, submission throttling and sanitised email content.",
     ],
     capabilities: [
       "Digital product lifecycle",
@@ -391,6 +393,9 @@ export const caseStudies: Record<
       "Responsive website development",
       "SEO & content architecture",
       "Iterative technical refinement",
+      "Resend integration & branded email design",
+      "Cloudflare Turnstile & server-side validation",
+      "Enquiry workflow & failure handling",
     ],
     relatedServices: [
       { label: "Yavu — Websites & digital foundations", href: "/services/website-development" },
@@ -401,8 +406,8 @@ export const caseStudies: Record<
       "This case study describes the design, development and revamp work delivered. It does not claim a measured increase in sales, enquiries or search rankings. Before screenshots were supplied for this review; current screenshots were captured on 6 October 2026. The old Groups and Visa pages were reported as unavailable. Benefits described here are intended outcomes, not measured results.",
     seoTitle: "JAD Travel Website Build & Revamp — Fiji",
     seoDescription:
-      "JAD Travel website revamp in Fiji: before-and-after screenshots explain changes to corporate travel content, real team imagery, medical-travel guidance and enquiries.",
-    dateModified: "2026-10-06T13:00:00+12:00",
+      "JAD Travel website revamp in Fiji: before-and-after comparisons, React development, Resend enquiry emails, branded acknowledgements and Cloudflare Turnstile protection.",
+    dateModified: "2026-10-06T18:49:00+12:00",
     url: "https://jadtravelfiji.com/",
   },
 };

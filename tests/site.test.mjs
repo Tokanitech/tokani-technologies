@@ -25,7 +25,8 @@ test('case-study hub and detail pages expose strong discovery signals',async()=>
     assert.match(hub,new RegExp(`href="/case-studies/${slug}"`));
     const html=await(await fetch(base+`/case-studies/${slug}`)).text();
     assert.match(html,/Case study updated/);
-    assert.ok(html.includes(`"dateModified":"${["jad", "unravel-viti"].includes(slug) ? "2026-10-06T13:00:00+12:00" : "2026-09-27T11:00:00+12:00"}"`));
+    const modified = slug === 'jad' ? '2026-10-06T18:49:00+12:00' : slug === 'unravel-viti' ? '2026-10-06T13:00:00+12:00' : '2026-09-27T11:00:00+12:00';
+    assert.ok(html.includes(`"dateModified":"${modified}"`));
     assert.match(html,/"articleSection":"Client case studies"/);
     assert.match(html,/property="og:type" content="article"/);
     assert.match(html,/Related case studies/);

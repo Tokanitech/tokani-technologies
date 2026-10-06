@@ -10,6 +10,7 @@ import {
 } from "../../components/ui";
 import { caseStudies } from "../../lib/content";
 import { jadComparisons } from "../../lib/jad-comparisons";
+import { jadConnectedForms, jadTechnologies } from "../../lib/jad-implementation";
 import { pageMetadata, siteUrl } from "../../lib/seo";
 
 export const dynamicParams = false;
@@ -91,6 +92,8 @@ export default async function CaseStudy({
               <a key={comparison.slug} href={`#jad-${comparison.slug}-heading`}>{comparison.name}</a>
             ))}
             <a href="#jad-availability-heading">Groups &amp; Visa</a>
+            <a href="#jad-enquiries-heading">Forms &amp; email delivery</a>
+            <a href="#jad-technology-heading">Skills &amp; technologies</a>
             <a href="#case-delivery-heading">Delivery &amp; project status</a>
           </nav>
           {p.url && <a className="text-link" href={p.url} target="_blank" rel="noreferrer">View the live JAD website ↗ (opens in a new tab)</a>}
@@ -114,6 +117,45 @@ export default async function CaseStudy({
             builds on Tokani’s original custom website rather than replacing a
             third-party or inherited site.
           </p>
+
+          <section className="wrap section compact-top jad-implementation" aria-labelledby="jad-enquiries-heading">
+            <p className="eyebrow">Beyond the redesign</p>
+            <h2 id="jad-enquiries-heading">Connected enquiries. A clear acknowledgement.</h2>
+            <p>
+              Tokani connected eight enquiry types to Resend so validated requests
+              reach JAD’s reservations team at <strong>reservations@jad.com.fj</strong>.
+              Cloudflare Turnstile adds a bot check to the submission journey;
+              the server verifies the token before the enquiry can be sent.
+            </p>
+            <ol className="jad-enquiry-flow">
+              <li><strong>Check the submission.</strong> Turnstile verification, production hostname checks, field validation and submission throttling help reduce automated spam and invalid requests.</li>
+              <li><strong>Notify the reservations team.</strong> Resend sends the enquiry with a subject identifying its form or service, such as Visa, Medical Travel or Group Travel. Reply-To uses the customer’s email so the team can respond directly.</li>
+              <li><strong>Acknowledge the customer.</strong> After Resend accepts the team notification, a separate branded email includes the JAD logo, team signature, office details and contact links. Replies go to reservations@jad.com.fj. Submitted medical details and other personal enquiry content are kept out of the acknowledgement.</li>
+              <li><strong>Handle delivery failures honestly.</strong> A failed team notification returns an error. If only the customer acknowledgement fails, the enquiry remains successful so the customer is not prompted to submit it again.</li>
+            </ol>
+            <div className="jad-form-types">
+              {jadConnectedForms.map(([name, purpose]) => (
+                <div key={name}><h3>{name}</h3><p>{purpose}</p></div>
+              ))}
+            </div>
+            <p className="jad-evidence-note">
+              The acknowledgement confirms receipt of an enquiry, not a booking,
+              medical clearance or visa approval. Email-provider acceptance and
+              final inbox delivery are separate stages; this section documents
+              the implemented integration, not a guaranteed delivery time.
+            </p>
+          </section>
+
+          <section className="wrap section compact-top jad-implementation" aria-labelledby="jad-technology-heading">
+            <p className="eyebrow">Skills and technologies applied</p>
+            <h2 id="jad-technology-heading">What powered the JAD revamp.</h2>
+            <p>Business discovery, travel-service UX, content strategy and real team photography shaped the experience. The verified implementation combines the following tools and skills.</p>
+            <dl className="jad-technology-grid">
+              {jadTechnologies.map(([name, purpose]) => (
+                <div key={name}><dt>{name}</dt><dd>{purpose}</dd></div>
+              ))}
+            </dl>
+          </section>
 
           <section className="wrap jad-comparisons" aria-labelledby="jad-comparison-heading">
             <div className="case-visual-heading">

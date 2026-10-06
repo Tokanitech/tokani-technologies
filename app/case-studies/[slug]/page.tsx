@@ -103,7 +103,7 @@ export default async function CaseStudy({
                 Each comparison explains the design decision and the intended customer benefit.
               </p>
               <p className="jad-evidence-note">
-                Before: original-site screenshots supplied by JAD’s owner on 6 October 2026.
+                Before: original-site screenshots supplied for this review on 6 October 2026.
                 After: captures from the revamped build on the same date.
                 The supplied captures use different viewport sizes; these comparisons show
                 content and layout decisions, rather than a controlled performance test.
@@ -137,7 +137,7 @@ export default async function CaseStudy({
             <aside className="notice jad-availability" aria-labelledby="jad-availability-heading">
               <h3 id="jad-availability-heading">Groups and Visa: current pages, without an old-page comparison.</h3>
               <p>
-                During the original-site review, JAD’s owner reported that the Groups and Visa pages did not work.
+                During the original-site review, the Groups and Visa pages were reported as unavailable.
                 No usable before screenshots were supplied for those pages. The revamped build has accessible
                 Group Travel and Visa Assistance pages, shown below; this records the current experience
                 without claiming we independently diagnosed the old failures.

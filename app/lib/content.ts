@@ -395,7 +395,7 @@ export const caseStudies: Record<
     outcome:
       "The result is not simply a redesigned travel website. It is a documented progression from first build to a more focused second-generation platform for a Suva travel agency, showing Tokani’s ability to launch, review its own work critically and improve a digital product as understanding of the business deepens.",
     boundary:
-      "This case study describes the design, development and revamp work delivered. It does not claim a measured increase in sales, enquiries or search rankings. Before screenshots were supplied by JAD’s owner; current screenshots were captured on 6 October 2026. The owner reported that the old Groups and Visa pages were unavailable. Benefits described here are intended outcomes, not measured results.",
+      "This case study describes the design, development and revamp work delivered. It does not claim a measured increase in sales, enquiries or search rankings. Before screenshots were supplied for this review; current screenshots were captured on 6 October 2026. The old Groups and Visa pages were reported as unavailable. Benefits described here are intended outcomes, not measured results.",
     seoTitle: "JAD Travel Website Build & Revamp — Fiji",
     seoDescription:
       "JAD Travel website revamp in Fiji: before-and-after screenshots explain changes to corporate travel content, real team imagery, medical-travel guidance and enquiries.",

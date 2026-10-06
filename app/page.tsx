@@ -129,9 +129,10 @@ export default function Home() {
             </div>
           </div>
           <div id="case-studies" className="project-grid home-projects">
-            {[projects[1], projects[2], projects[3]].map((p) => (
-              <ProjectCard key={p.slug} project={p} />
-            ))}
+            {["jad", "dfc", "unravel-viti"].map((slug) => {
+              const project = projects.find((project) => project.slug === slug);
+              return project ? <ProjectCard key={project.slug} project={project} /> : null;
+            })}
           </div>
         </div>
       </section>

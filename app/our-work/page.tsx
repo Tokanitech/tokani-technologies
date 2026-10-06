@@ -5,9 +5,37 @@ import { projects } from "../lib/content";
 import { pageMetadata } from "../lib/seo";
 export const metadata = pageMetadata(
   "Our Work — Fiji Websites & Digital Products",
-  "Explore Tokani’s website projects, client case studies, community tools and demonstrations, including Unravel Viti, Vatudei, DFC and JAD.",
+  "Explore Tokani’s client websites and integrations, public tools, work in development and demonstrations. Start with JAD Travel, DFC and Unravel Viti.",
   "/our-work",
 );
+
+const workGroups = [
+  {
+    id: "client-websites",
+    title: "Client websites & integrations",
+    description: "Business websites, customer enquiry journeys and custom features. Explore the case studies to see what changed and why.",
+    slugs: ["jad", "dfc", "unravel-viti", "macquarie"],
+  },
+  {
+    id: "public-tools",
+    title: "Public tools",
+    description: "Tokani tools you can explore today, built around practical needs in Fiji.",
+    slugs: ["quote-my-job", "careers"],
+  },
+  {
+    id: "in-development",
+    title: "Work in development",
+    description: "Client work still being developed. The project details explain its scope and current stage.",
+    slugs: ["vatudei"],
+  },
+  {
+    id: "demonstrations",
+    title: "Demonstrations",
+    description: "Examples of an approach or capability, with their demonstration status clearly identified.",
+    slugs: ["fnu"],
+  },
+];
+
 export default function Work() {
   return (
     <>
@@ -17,26 +45,32 @@ export default function Work() {
       <PageIntro
         eyebrow="The work behind the words"
         title="Built with purpose."
-        description="Client websites, Tokani products and focused demonstrations. Each project is labelled so you can see what has been built and where it stands."
-      />
-      <section className="section wrap compact-top">
-        <div className="notice">
-          <h2>Looking for the detail behind the work?</h2>
-          <p>
-            Our client case studies explain the business problem, what Tokani
-            built, the capabilities applied and the boundaries of what is being
-            claimed.
-          </p>
-          <Link className="text-link" href="/case-studies">
-            Browse detailed case studies →
-          </Link>
-        </div>
-        <div className="project-grid">
-          {projects.map((p) => (
-            <ProjectCard key={p.slug} project={p} />
+        description="Start with our client websites and integrations, then explore public tools, work in development and demonstrations. Each project shows its current status."
+      >
+        <nav className="work-category-links" aria-label="Work categories">
+          {workGroups.map((group) => (
+            <a key={group.id} href={`#${group.id}`}>{group.title} <span>({group.slugs.length})</span></a>
           ))}
-        </div>
-      </section>
+        </nav>
+      </PageIntro>
+      {workGroups.map((group, index) => (
+        <section key={group.id} className={`section wrap work-category${index === 0 ? " compact-top" : ""}`} aria-labelledby={group.id}>
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">{String(index + 1).padStart(2, "0")} · {group.slugs.length} {group.slugs.length === 1 ? "project" : "projects"}</p>
+              <h2 id={group.id}>{group.title}</h2>
+              <p>{group.description}</p>
+            </div>
+            {index === 0 && <Link className="text-link" href="/case-studies">Browse detailed case studies →</Link>}
+          </div>
+          <div className="project-grid">
+            {group.slugs.map((slug) => {
+              const project = projects.find((project) => project.slug === slug);
+              return project ? <ProjectCard key={project.slug} project={project} /> : null;
+            })}
+          </div>
+        </section>
+      ))}
       <Cta />
     </>
   );

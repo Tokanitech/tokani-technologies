@@ -173,7 +173,7 @@ export const projects = [
     status: "Website & campaign work",
     image: "/portfolio/portfolio-dfc.jpg",
     description:
-      "Clearer customer pathways and connected website and trade communications for a Fiji travel business.",
+      "A travel website with custom fare guidance, enquiry context and a before-you-travel planning tool.",
     href: "/case-studies/dfc",
     external: false,
     label: "Read the case study",
@@ -185,7 +185,7 @@ export const projects = [
     status: "Original build & strategic revamp",
     image: "/portfolio/portfolio-jad.jpg",
     description:
-      "From the original custom build to a second-generation revamp shaped by what the first version taught us.",
+      "A website revamp with clearer services, protected enquiry forms and branded email acknowledgements.",
     href: "/case-studies/jad",
     external: false,
     label: "Read the case study",

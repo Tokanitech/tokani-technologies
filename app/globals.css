@@ -491,6 +491,13 @@ a:hover {
   grid-template-columns: repeat(2, 1fr);
   gap: 52px 30px;
 }
+.work-category-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.work-category-links a { display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; min-height: 44px; border: 1px solid var(--line); font-size: 14px; font-weight: 600; }
+.work-category-links span { font-weight: 400; }
+.work-category + .work-category { border-top: 1px solid var(--line); }
+.work-category .section-heading { align-items: start; }
+.work-category .section-heading h2 { scroll-margin-top: 115px; margin-bottom: 16px; }
+.work-category .section-heading p:not(.eyebrow) { font-size: 16px; max-width: 65ch; }
 .home-projects {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;

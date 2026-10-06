@@ -15,16 +15,16 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">Built in Fiji · Your friend in technology</p>
           <h1>
-            Good technology.
+            Websites and
             <br />
-            <span>Built around you.</span>
+            <span>business systems</span> for Fiji businesses.
           </h1>
           <p className="lead">
-            Websites, CRM and practical business systems for the way Fiji works.
+            Good technology. Built around you.
           </p>
           <p className="hero-description">
-            Start with what your business needs today. We’ll help you make the
-            next step clearer.
+            Websites, CRM and practical systems for the way you work.
+            Start with what your business needs today.
           </p>
           <div className="actions">
             <Link className="button" href="/contact">
@@ -90,6 +90,7 @@ export default function Home() {
                 <span>{s.meaning}</span>
               </div>
               <h3>{s.stage}</h3>
+              <p className="service-kind">{s.label}</p>
               <h4>{s.short}</h4>
               <p>{s.cardSummary}</p>
               <Link href={`/services/${s.slug}`} className="text-link">

@@ -25,7 +25,7 @@ test('case-study hub and detail pages expose strong discovery signals',async()=>
     assert.match(hub,new RegExp(`href="/case-studies/${slug}"`));
     const html=await(await fetch(base+`/case-studies/${slug}`)).text();
     assert.match(html,/Case study updated/);
-    assert.ok(html.includes(`"dateModified":"${slug === "jad" ? "2026-10-06T12:26:00+12:00" : "2026-09-27T11:00:00+12:00"}"`));
+    assert.ok(html.includes(`"dateModified":"${["jad", "unravel-viti"].includes(slug) ? "2026-10-06T13:00:00+12:00" : "2026-09-27T11:00:00+12:00"}"`));
     assert.match(html,/"articleSection":"Client case studies"/);
     assert.match(html,/property="og:type" content="article"/);
     assert.match(html,/Related case studies/);
@@ -54,4 +54,3 @@ test('production robots metadata permits rich Google previews',async()=>{
   const s=await(await fetch(base+'/case-studies/jad')).text();
   assert.match(s,/name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"/);
 });
-

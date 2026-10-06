@@ -27,6 +27,7 @@ export default function Services() {
                 <span>{s.meaning}</span>
               </div>
               <h2>{s.stage}</h2>
+              <p className="service-kind">{s.label}</p>
               <h3 className="service-subtitle">{s.short}</h3>
               <ul>
                 {s.includes.map((i) => (

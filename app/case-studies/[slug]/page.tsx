@@ -76,6 +76,27 @@ export default async function CaseStudy({
         </p>
       </PageIntro>
 
+      {slug === "jad" && (
+        <section className="wrap case-summary" aria-labelledby="jad-summary-heading">
+          <p className="eyebrow">The project at a glance</p>
+          <h2 id="jad-summary-heading">A clearer website for the way JAD works.</h2>
+          <p>
+            Tokani built JAD’s original website, then refined it around corporate,
+            group and specialist travel. The revamp brings forward JAD’s real
+            consultants and Suva office, explains the services more precisely
+            and makes customer enquiry pathways clearer.
+          </p>
+          <nav className="case-section-links" aria-label="JAD case study sections">
+            {jadComparisons.map((comparison) => (
+              <a key={comparison.slug} href={`#jad-${comparison.slug}-heading`}>{comparison.name}</a>
+            ))}
+            <a href="#jad-availability-heading">Groups &amp; Visa</a>
+            <a href="#case-delivery-heading">Delivery &amp; project status</a>
+          </nav>
+          {p.url && <a className="text-link" href={p.url} target="_blank" rel="noreferrer">View the live JAD website ↗ (opens in a new tab)</a>}
+        </section>
+      )}
+
       <div
         className={`wrap case-hero ${slug === "unravel-viti" ? "unravel-screenshots" : ""}`}
       >
@@ -270,7 +291,7 @@ export default async function CaseStudy({
         <div className="split">
           <p className="eyebrow">Delivery outcome</p>
           <div>
-            <h2>Something useful to build on.</h2>
+          <h2 id="case-delivery-heading">Something useful to build on.</h2>
             <p>{p.outcome}</p>
             <div className="notice">
               <h3>Project status</h3>
@@ -347,4 +368,3 @@ export default async function CaseStudy({
     </>
   );
 }
-

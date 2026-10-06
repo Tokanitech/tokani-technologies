@@ -60,6 +60,27 @@ test("rejects an oversized chunked body and malformed JSON", async () => {
 test("rejects another origin", async () => {
   assert.equal((await POST(req(payload, "https://other.example"))).status, 403);
 });
+test("email enquiries can omit a phone and still deliver both emails", async () => {
+  process.env.RESEND_API_KEY = "test-key";
+  const sent: Record<string, unknown>[] = [];
+  globalThis.fetch = async (_input, init) => {
+    sent.push(JSON.parse(String(init?.body)));
+    return new Response("{}");
+  };
+  const response = await POST(req({ ...payload, phone: undefined }));
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { ok: true, confirmationSent: true });
+  assert.equal(sent.length, 2);
+  assert.match(String(sent[0].text), /Phone \/ WhatsApp: Not provided/);
+});
+test("phone and WhatsApp preferences require a phone before delivery", async () => {
+  let calls = 0;
+  globalThis.fetch = async () => { calls++; return new Response("{}"); };
+  for (const contact of ["Phone call", "WhatsApp"])
+    for (const phone of ["", "   "])
+      assert.equal((await POST(req({ ...payload, contact, phone }))).status, 400);
+  assert.equal(calls, 0);
+});
 test("honeypot never contacts email provider", async () => {
   globalThis.fetch = async () => {
     throw new Error("must not send");

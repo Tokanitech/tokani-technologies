@@ -2,6 +2,7 @@ export const services = [
   {
     slug: "website-development",
     stage: "Yavu",
+    label: "Website",
     meaning: "Foundation",
     number: "01",
     title: "Website development in Fiji",
@@ -48,6 +49,7 @@ export const services = [
   {
     slug: "crm-workflows",
     stage: "Tubu",
+    label: "Website + CRM",
     meaning: "Growth",
     number: "02",
     title: "CRM & business workflows",
@@ -95,6 +97,7 @@ export const services = [
   {
     slug: "custom-systems",
     stage: "Qaqa",
+    label: "Custom systems",
     meaning: "Strength",
     number: "03",
     title: "Custom business systems & applications",
@@ -143,7 +146,7 @@ export const projects = [
     slug: "unravel-viti",
     name: "Unravel Viti",
     category: "Tourism & transport",
-    status: "Launch preparation",
+    status: "Live website",
     image: "/portfolio/unravel-home-20260920.jpg",
     description:
       "Turning a community-led tourism and transport vision into a clear digital storefront.",
@@ -262,7 +265,7 @@ export const caseStudies: Record<
     intro:
       "Business discovery, service structure and website development for a Fiji tourism and transport business.",
     image: "/portfolio/unravel-home-20260920.jpg",
-    status: "Launch preparation",
+    status: "Live website",
     challenge:
       "Unravel’s vision spans transport, cultural experiences and community opportunity. The first website needed to give customers a clear starting point without forcing every future ambition into launch.",
     work: [
@@ -283,13 +286,13 @@ export const caseStudies: Record<
       { label: "Yavu — Websites & digital foundations", href: "/services/website-development" },
     ],
     outcome:
-      "A coherent digital storefront that presents Unravel’s transport and cultural experiences through a clearer customer journey, with a technical foundation that can support launch and later service growth.",
+      "A live digital storefront at unravelfiji.com.fj that presents Unravel’s transport and cultural experiences through a clearer customer journey, with a technical foundation for later service growth.",
     boundary:
-      "This case study describes the website work delivered. Final domain, contact channels, enquiry delivery and launch arrangements need confirmation before it is represented as a fully operational booking service. Booking growth and conversion improvements have not been measured here.",
+      "The website is live at unravelfiji.com.fj. This case study documents the website work delivered; it does not certify booking fulfilment or enquiry delivery. Booking growth and conversion improvements have not been measured here.",
     seoTitle: "Unravel Viti Tourism Website — Fiji",
     seoDescription:
       "See how Tokani structured a Fiji tourism and transport business into a responsive website with authentic imagery, clear enquiries and local SEO foundations.",
-    dateModified: "2026-09-27T11:00:00+12:00",
+    dateModified: "2026-10-06T13:00:00+12:00",
     url: "https://unravelfiji.com.fj/",
   },
   vatudei: {
@@ -399,8 +402,7 @@ export const caseStudies: Record<
     seoTitle: "JAD Travel Website Build & Revamp — Fiji",
     seoDescription:
       "JAD Travel website revamp in Fiji: before-and-after screenshots explain changes to corporate travel content, real team imagery, medical-travel guidance and enquiries.",
-    dateModified: "2026-10-06T12:26:00+12:00",
+    dateModified: "2026-10-06T13:00:00+12:00",
     url: "https://jadtravelfiji.com/",
   },
 };
-

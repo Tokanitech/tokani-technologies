@@ -249,7 +249,7 @@ export async function POST(request: Request) {
   if (
     !name ||
     !email ||
-    !phone ||
+    (contact !== "Email" && !phone) ||
     !details ||
     !services.has(service) ||
     !contacts.has(contact) ||
@@ -273,7 +273,7 @@ export async function POST(request: Request) {
       name,
       business: business || "Not provided",
       email,
-      phone,
+      phone: phone || "Not provided",
       service,
       contact,
       details,
@@ -290,7 +290,7 @@ export async function POST(request: Request) {
       `Name: ${name}`,
       `Business: ${business || "Not provided"}`,
       `Email: ${email}`,
-      `Phone / WhatsApp: ${phone}`,
+      `Phone / WhatsApp: ${phone || "Not provided"}`,
       `Service: ${service}`,
       `Preferred contact: ${contact}`,
       "",

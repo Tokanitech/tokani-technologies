@@ -8,6 +8,7 @@ const recipient = "askme@tokani.com.fj";
 
 export default function ContactForm() {
   const submitting = useRef(false);
+  const [preferredContact, setPreferredContact] = useState("Email");
   const [status, setStatus] = useState<
     "idle" | "sending" | "sent" | "sent_no_confirmation" | "fallback" | "error"
   >("idle");
@@ -34,7 +35,7 @@ export default function ContactForm() {
       `Name: ${name}`,
       `Business: ${business || "Not provided"}`,
       `Email: ${email}`,
-      `Phone / WhatsApp: ${phone}`,
+      `Phone / WhatsApp: ${phone || "Not provided"}`,
       `Service: ${service}`,
       `Preferred contact: ${contact}`,
       "",
@@ -69,6 +70,7 @@ export default function ContactForm() {
           /* Measurement must never affect delivery. */
         }
         formElement.reset();
+        setPreferredContact("Email");
         return;
       }
       const result = await response.json().catch(() => ({}));
@@ -95,13 +97,14 @@ export default function ContactForm() {
         Website
         <input name="website" tabIndex={-1} autoComplete="off" />
       </label>
+      <p className="form-guidance">All fields are required unless marked optional.</p>
       <div className="form-row">
         <label>
           Your name
           <input name="name" maxLength={120} autoComplete="name" required />
         </label>
         <label>
-          Business name
+          Business name (optional)
           <input name="business" maxLength={160} autoComplete="organization" />
         </label>
       </div>
@@ -117,14 +120,18 @@ export default function ContactForm() {
           />
         </label>
         <label>
-          Phone or WhatsApp
+          Phone or WhatsApp{preferredContact === "Email" ? " (optional)" : ""}
           <input
             name="phone"
             maxLength={80}
             type="tel"
             autoComplete="tel"
-            required
+            required={preferredContact !== "Email"}
+            aria-describedby="phone-guidance"
           />
+          <span className="form-field-note" id="phone-guidance">
+            Needed only if you prefer a phone call or WhatsApp reply.
+          </span>
         </label>
       </div>
       <div className="form-row">
@@ -143,7 +150,7 @@ export default function ContactForm() {
         </label>
         <label>
           Preferred contact
-          <select name="contact" required defaultValue="Email">
+          <select name="contact" required value={preferredContact} onChange={(event) => setPreferredContact(event.target.value)}>
             <option>Email</option>
             <option>Phone call</option>
             <option>WhatsApp</option>

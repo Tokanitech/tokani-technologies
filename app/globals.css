@@ -99,6 +99,23 @@ summary:focus-visible {
 a:hover {
   color: var(--blue);
 }
+
+.service-card .service-kind {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 8px 0 20px;
+}
+.form-guidance, .form-field-note {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+}
+.form-field-note { display: block; margin-top: 6px; font-weight: 400; }
+.case-summary { margin-bottom: 40px; padding: 28px; background: var(--mist); }
+.case-summary h2 { font-size: clamp(24px, 3vw, 36px); margin-bottom: 16px; }
+.case-section-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+.case-section-links a { padding: 10px 14px; min-height: 44px; border: 1px solid var(--line); background: #fff; font-weight: 600; }
+.jad-comparison h3, #jad-availability-heading, #case-delivery-heading { scroll-margin-top: 115px; }
 .wrap {
   width: min(var(--max), calc(100% - 96px));
   margin-inline: auto;
@@ -259,7 +276,7 @@ a:hover {
   align-items: center;
 }
 .hero-copy h1 {
-  font-size: clamp(44px, 5.3vw, 74px);
+  font-size: clamp(40px, 4.2vw, 60px);
   line-height: 1.05;
 }
 .hero-copy h1 span {

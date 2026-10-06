@@ -1476,6 +1476,25 @@ a:hover {
 .case-hero-caption strong {
   color: #222;
 }
+.jad-comparisons { margin-block: 64px; }
+.jad-evidence-note { font-size: 14px; line-height: 1.7; }
+.jad-comparison { padding-block: 36px; border-top: 1px solid var(--line); }
+.jad-comparison h3 { max-width: 850px; margin-bottom: 24px; font-size: clamp(24px, 3vw, 32px); }
+.jad-comparison-grid, .jad-comparison-reasons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.jad-comparison-figure { min-width: 0; margin: 0; }
+.jad-stage-label { padding: 10px 14px; background: var(--mist); color: var(--black); font-size: 14px; font-weight: 700; }
+.jad-screen-frame { display: block; position: relative; aspect-ratio: 4 / 3; border: 1px solid var(--line); background: #fff; }
+.jad-screen-frame img { object-fit: contain; }
+.jad-comparison-figure p { margin-block: 14px; }
+.jad-comparison-reasons { padding: 20px 24px; background: var(--mist); margin-top: 12px; }
+.jad-comparison-reasons p { margin: 0; }
+.jad-comparison-reasons strong { display: block; margin-bottom: 6px; color: var(--black); }
+.jad-availability .jad-comparison-grid { margin-top: 24px; }
+@media (max-width: 760px) {
+  .jad-comparison-grid, .jad-comparison-reasons { grid-template-columns: 1fr; }
+  .jad-comparisons { margin-block: 40px; }
+  .jad-comparison-reasons { padding: 18px; }
+}
 .case-visual-story {
   margin-top: 52px;
   margin-bottom: 12px;

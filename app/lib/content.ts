@@ -395,11 +395,12 @@ export const caseStudies: Record<
     outcome:
       "The result is not simply a redesigned travel website. It is a documented progression from first build to a more focused second-generation platform for a Suva travel agency, showing Tokani’s ability to launch, review its own work critically and improve a digital product as understanding of the business deepens.",
     boundary:
-      "This case study describes the design, development and revamp work delivered. It does not claim a measured increase in sales, enquiries or search rankings. JAD’s About section is still being refined, so this case study deliberately does not use that section as visual evidence.",
+      "This case study describes the design, development and revamp work delivered. It does not claim a measured increase in sales, enquiries or search rankings. Before screenshots were supplied by JAD’s owner; current screenshots were captured on 6 October 2026. The owner reported that the old Groups and Visa pages were unavailable. Benefits described here are intended outcomes, not measured results.",
     seoTitle: "JAD Travel Website Build & Revamp — Fiji",
     seoDescription:
-      "JAD Travel case study: original website development, strategic revamp, corporate travel UX, responsive design and SEO for a long-established Suva travel agency.",
-    dateModified: "2026-09-27T11:00:00+12:00",
+      "JAD Travel website revamp in Fiji: before-and-after screenshots explain changes to corporate travel content, real team imagery, medical-travel guidance and enquiries.",
+    dateModified: "2026-10-06T12:26:00+12:00",
     url: "https://jad-site-build.vercel.app",
   },
 };
+

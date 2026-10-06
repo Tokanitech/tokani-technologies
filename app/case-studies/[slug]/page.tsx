@@ -9,6 +9,7 @@ import {
   ProjectImage,
 } from "../../components/ui";
 import { caseStudies } from "../../lib/content";
+import { jadComparisons } from "../../lib/jad-comparisons";
 import { pageMetadata, siteUrl } from "../../lib/seo";
 
 export const dynamicParams = false;
@@ -92,6 +93,67 @@ export default async function CaseStudy({
             builds on Tokani’s original custom website rather than replacing a
             third-party or inherited site.
           </p>
+
+          <section className="wrap jad-comparisons" aria-labelledby="jad-comparison-heading">
+            <div className="case-visual-heading">
+              <p className="eyebrow">Original website and revamp</p>
+              <h2 id="jad-comparison-heading">See what changed, and why.</h2>
+              <p>
+                Five matching pages show how Tokani refined its original JAD website.
+                Each comparison explains the design decision and the intended customer benefit.
+              </p>
+              <p className="jad-evidence-note">
+                Before: original-site screenshots supplied by JAD’s owner on 6 October 2026.
+                After: captures from the revamped build on the same date.
+                The supplied captures use different viewport sizes; these comparisons show
+                content and layout decisions, rather than a controlled performance test.
+                Select any screenshot to inspect it at full size.
+              </p>
+            </div>
+            {jadComparisons.map((comparison) => (
+              <article className="jad-comparison" key={comparison.slug} aria-labelledby={`jad-${comparison.slug}-heading`}>
+                <p className="eyebrow">{comparison.name}</p>
+                <h3 id={`jad-${comparison.slug}-heading`}>{comparison.title}</h3>
+                <div className="jad-comparison-grid">
+                  {(["before", "after"] as const).map((stage) => {
+                    const src = `/portfolio/jad-comparison/${comparison.slug}-${stage}.${stage === "before" ? "webp" : "jpg"}`;
+                    return (
+                      <figure className="jad-comparison-figure" key={stage}>
+                        <figcaption className="jad-stage-label">{stage === "before" ? "Before · Original website" : "After · Tokani revamp"}</figcaption>
+                        <a className="jad-screen-frame" href={src} target="_blank" rel="noreferrer" aria-label={`Open ${comparison.name} ${stage} screenshot at full size (opens in a new tab)`}>
+                          <Image src={src} alt={`JAD Travel ${comparison.name.toLowerCase()} page ${stage === "before" ? "before the revamp, supplied by the owner" : "after the revamp, captured on 6 October 2026"}`} fill sizes="(max-width: 760px) 100vw, 600px" />
+                        </a>
+                        <p>{comparison[stage]}</p>
+                      </figure>
+                    );
+                  })}
+                </div>
+                <div className="jad-comparison-reasons">
+                  <p><strong>Why we changed it</strong>{comparison.reason}</p>
+                  <p><strong>Intended customer benefit</strong>{comparison.benefit}</p>
+                </div>
+              </article>
+            ))}
+            <aside className="notice jad-availability" aria-labelledby="jad-availability-heading">
+              <h3 id="jad-availability-heading">Groups and Visa: current pages, without an old-page comparison.</h3>
+              <p>
+                During the original-site review, JAD’s owner reported that the Groups and Visa pages did not work.
+                No usable before screenshots were supplied for those pages. The revamped build has accessible
+                Group Travel and Visa Assistance pages, shown below; this records the current experience
+                without claiming we independently diagnosed the old failures.
+              </p>
+              <div className="jad-comparison-grid">
+                {[{ slug: "group", name: "Group Travel" }, { slug: "visa", name: "Visa Assistance" }].map((page) => (
+                  <figure className="jad-comparison-figure" key={page.slug}>
+                    <figcaption className="jad-stage-label">{page.name} · Revamped page</figcaption>
+                    <a className="jad-screen-frame" href={`/portfolio/jad-comparison/${page.slug}-after.jpg`} target="_blank" rel="noreferrer" aria-label={`Open current ${page.name} screenshot at full size (opens in a new tab)`}>
+                      <Image src={`/portfolio/jad-comparison/${page.slug}-after.jpg`} alt={`JAD Travel revamped ${page.name.toLowerCase()} page captured on 6 October 2026`} fill sizes="(max-width: 760px) 100vw, 600px" />
+                    </a>
+                  </figure>
+                ))}
+              </div>
+            </aside>
+          </section>
 
           <section
             className="wrap case-visual-story"
@@ -285,3 +347,4 @@ export default async function CaseStudy({
     </>
   );
 }
+

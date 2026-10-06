@@ -71,3 +71,14 @@ Verification completed on 19 September 2026: lint, TypeScript, production build,
 - Merge reviewed PR and verify Vercel production deployment.
 - Confirm production canonical URLs, sitemap, robots, redirects and form behaviour.
 - Complete authorised delivery and analytics tests and Search Console checks.
+
+
+## JAD before-and-after case study — 6 October 2026
+
+- Original screenshots supplied by the owner: image(2).png (Home), image(7).png (About), image(8).png (Corporate), image(5).png (Medical), image(6).png (Contact). Optimised as WebP for delivery in public/portfolio/jad-comparison without cropping or resizing; the supplied source images remain available separately.
+- After screenshots captured from jad-site-build.vercel.app on 6 October 2026. Five matching pairs plus current Group and Visa pages. Screenshots retain their original viewport sizes; frames contain the whole image, and full-size links permit inspection.
+- Groups/Visa failures are explicitly owner-reported; no old failure diagnosis or before screenshot is claimed. No newly added service is inferred from unavailable pages.
+- Contact comparison preserves credit for the existing form. The old map did not render in the supplied screenshot; the case study does not claim a map repair or verified email delivery.
+- Comparison copy explains positioning, authentic imagery, practical corporate coordination, medical service boundaries and local enquiry context. Customer benefits are intended, with no measured conversion, revenue, SEO ranking or performance gains claimed.
+- About screenshots now provide evidence, replacing the stale exclusion from the case study. Existing authentic team/storefront photography remains.
+- Updated JAD description and dateModified; other case studies retain their dates and content.

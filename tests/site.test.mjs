@@ -15,7 +15,7 @@ test('local images resolve and security response headers exist',async()=>{const 
 test('service pages state the locked first-year value clearly',async()=>{const s=await(await fetch(base+'/services')).text();assert.match(s,/1 professional business email mailbox/);assert.match(s,/2 professional business email mailboxes/);assert.match(s,/SME digitisation package/);assert.ok(!s.includes('Website and CRM package'));});
 test('DFC case study explains the interactive fare and planning work without claiming live fares',async()=>{const s=await(await fetch(base+'/case-studies/dfc')).text();assert.match(s,/Fare Pick Helper/);assert.match(s,/Before You Travel Planner/);assert.match(s,/general guidance rather than a live quote/);assert.match(s,/href="\/services\/custom-systems"/);assert.match(s,/portfolio\/portfolio-dfc\.jpg/);});
 
-test('JAD case study credits the original build and shows current visual evidence without relying on the About history section',async()=>{const s=await(await fetch(base+'/case-studies/jad')).text();assert.match(s,/original JAD website/);assert.match(s,/second-generation revamp/);assert.match(s,/jad-team-current\.webp/);assert.match(s,/jad-storefront\.jpg/);assert.match(s,/deliberately does not use that section as visual evidence/);});
+test('JAD case study credits the original build and shows current visual evidence alongside original-page comparisons',async()=>{const s=await(await fetch(base+'/case-studies/jad')).text();assert.match(s,/original JAD website/);assert.match(s,/second-generation revamp/);assert.match(s,/jad-team-current\.webp/);assert.match(s,/jad-storefront\.jpg/);assert.match(s,/See what changed, and why/);assert.match(s,/JAD’s owner reported/);});
 
 
 test('case-study hub and detail pages expose strong discovery signals',async()=>{
@@ -25,7 +25,7 @@ test('case-study hub and detail pages expose strong discovery signals',async()=>
     assert.match(hub,new RegExp(`href="/case-studies/${slug}"`));
     const html=await(await fetch(base+`/case-studies/${slug}`)).text();
     assert.match(html,/Case study updated/);
-    assert.match(html,/"dateModified":"2026-09-27T11:00:00\+12:00"/);
+    assert.ok(html.includes(`"dateModified":"${slug === "jad" ? "2026-10-06T12:26:00+12:00" : "2026-09-27T11:00:00+12:00"}"`));
     assert.match(html,/"articleSection":"Client case studies"/);
     assert.match(html,/property="og:type" content="article"/);
     assert.match(html,/Related case studies/);
@@ -36,7 +36,7 @@ test('JAD case-study metadata targets Fiji website and revamp intent',async()=>{
   const s=await(await fetch(base+'/case-studies/jad')).text();
   assert.match(s,/<title>JAD Travel Website Build &amp; Revamp — Fiji \| Tokani Technologies<\/title>/);
   assert.match(s,/JAD Travel website: from original build to second-generation revamp\./);
-  assert.match(s,/>27 September 2026<\/time>/);
+  assert.match(s,/>6 October 2026<\/time>/);
   assert.match(s,/long-established Suva travel agency/);
   assert.match(s,/Fiji corporate travel/);
   assert.match(s,/structured data and route-specific search metadata/);
@@ -54,3 +54,4 @@ test('production robots metadata permits rich Google previews',async()=>{
   const s=await(await fetch(base+'/case-studies/jad')).text();
   assert.match(s,/name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"/);
 });
+

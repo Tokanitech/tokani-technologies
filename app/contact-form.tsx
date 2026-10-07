@@ -100,17 +100,17 @@ export default function ContactForm() {
       <p className="form-guidance">All fields are required unless marked optional.</p>
       <div className="form-row">
         <label>
-          Your name
+          <span className="form-label">Your name</span>
           <input name="name" maxLength={120} autoComplete="name" required />
         </label>
         <label>
-          Business name (optional)
+          <span className="form-label">Business name (optional)</span>
           <input name="business" maxLength={160} autoComplete="organization" />
         </label>
       </div>
       <div className="form-row">
         <label>
-          Email address
+          <span className="form-label">Email address</span>
           <input
             name="email"
             maxLength={254}
@@ -120,7 +120,7 @@ export default function ContactForm() {
           />
         </label>
         <label>
-          Phone or WhatsApp{preferredContact === "Email" ? " (optional)" : ""}
+          <span className="form-label">Phone or WhatsApp{preferredContact === "Email" ? " (optional)" : ""}</span>
           <input
             name="phone"
             maxLength={80}
@@ -136,7 +136,7 @@ export default function ContactForm() {
       </div>
       <div className="form-row">
         <label>
-          What do you need?
+          <span className="form-label">What do you need?</span>
           <select name="service" required defaultValue="">
             <option value="" disabled>
               Select a service
@@ -149,7 +149,7 @@ export default function ContactForm() {
           </select>
         </label>
         <label>
-          Preferred contact
+          <span className="form-label">Preferred contact</span>
           <select name="contact" required value={preferredContact} onChange={(event) => setPreferredContact(event.target.value)}>
             <option>Email</option>
             <option>Phone call</option>

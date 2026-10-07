@@ -34,11 +34,13 @@ export default function Services() {
                   <li key={i}>{i}</li>
                 ))}
               </ul>
-              <p className="price">{s.price}</p>
-              <p className="muted">{s.priceNote}</p>
-              <Link className="text-link" href={`/services/${s.slug}`}>
-                Explore {s.stage} ↗
-              </Link>
+              <div className="service-footer">
+                <p className="price">{s.price}</p>
+                <p className="muted">{s.priceNote}</p>
+                <Link className="text-link" href={`/services/${s.slug}`}>
+                  Explore {s.stage} ↗
+                </Link>
+              </div>
             </article>
           ))}
         </div>

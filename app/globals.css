@@ -337,17 +337,24 @@ a:hover {
 }
 .project-image {
   position: relative;
+  padding: 12px;
+  background: var(--mist);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px #00000008;
+}
+.project-image-viewport {
+  position: relative;
   aspect-ratio: 1.5;
   overflow: hidden;
-  background: #eceeec;
-  border: 1px solid #e1e4e2;
+  background: #fff;
 }
 .project-image img {
   object-fit: cover;
   object-position: top;
   transition: transform 0.25s;
 }
-.hero-visual .project-image {
+.hero-visual .project-image-viewport {
   aspect-ratio: 1.34;
   box-shadow: 0 12px 25px #0000000c;
   border: 0;
@@ -761,10 +768,10 @@ a:hover {
 .notice .text-link {
   margin-top: 18px;
 }
-.case-hero .project-image {
+.case-hero .project-image-viewport {
   aspect-ratio: 2.25;
 }
-.case-hero.vatudei-card .project-image {
+.case-hero.vatudei-card .project-image-viewport {
   aspect-ratio: 3;
 }
 .case-body .split {
@@ -931,14 +938,22 @@ a:hover {
   border: 1px solid #e5e5e1;
 }
 .form-row {
+  grid-template-rows: auto auto auto;
+  align-items: start;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
+}
+.form-row > label {
+  grid-row: span 3;
+  grid-template-rows: subgrid;
 }
 .contact-form label {
   font-size: 13px;
   font-weight: 600;
   display: grid;
+  align-content: start;
+  min-width: 0;
   gap: 8px;
 }
 .contact-form input,
@@ -954,6 +969,10 @@ a:hover {
   font-size: 16px;
   padding: 12px;
   min-height: 48px;
+}
+.contact-form input,
+.contact-form select {
+  height: 52px;
 }
 .contact-form textarea {
   resize: vertical;
@@ -1043,7 +1062,7 @@ a:hover {
   .home-hero {
     padding-block: 88px;
   }
-  .hero-visual .project-image {
+  .hero-visual .project-image-viewport {
     aspect-ratio: 1.45;
   }
 }
@@ -1053,9 +1072,6 @@ a:hover {
   }
   .home-hero {
     gap: 35px;
-  }
-  .hero-copy h1 {
-    font-size: 55px;
   }
   .main-nav {
     gap: 20px;
@@ -1134,9 +1150,6 @@ a:hover {
   .home-hero {
     grid-template-columns: 1fr 1fr;
     gap: 28px;
-  }
-  .hero-copy h1 {
-    font-size: 44px;
   }
   .hero-copy .lead {
     font-size: 18px;
@@ -1243,9 +1256,6 @@ a:hover {
     padding-block: 42px 40px;
     gap: 42px;
   }
-  .hero-copy h1 {
-    font-size: clamp(40px, 10.5vw, 58px);
-  }
   .hero-copy .eyebrow {
     font-size: 10px;
   }
@@ -1262,7 +1272,7 @@ a:hover {
     padding: 20px 20px 0;
     margin-right: 8px;
   }
-  .hero-visual .project-image {
+  .hero-visual .project-image-viewport {
     aspect-ratio: 1.7;
   }
   .hero-visual-label {
@@ -1417,10 +1427,10 @@ a:hover {
     padding: 23px;
     margin-top: 28px;
   }
-  .case-hero .project-image {
+  .case-hero .project-image-viewport {
     aspect-ratio: 1.5;
   }
-  .case-hero.vatudei-card .project-image {
+  .case-hero.vatudei-card .project-image-viewport {
     aspect-ratio: 1.8;
   }
   .case-body .split {
@@ -1498,9 +1508,10 @@ a:hover {
 }
 
 /* Preserve the complete current Unravel screenshots in the case study. */
-.case-hero.unravel-screenshots .project-image { aspect-ratio: 1348 / 926; }
+.case-hero.unravel-screenshots .project-image-viewport { aspect-ratio: 1348 / 926; }
 .case-screenshot { margin-block: 32px; }
-.case-screenshot img { display: block; width: 100%; height: auto; border: 1px solid #e1e4e2; }
+.screenshot-frame { padding: 12px; background: var(--mist); border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 4px 16px #00000008; }
+.case-screenshot img { display: block; width: 100%; height: auto; }
 .case-screenshot figcaption { margin-top: 12px; font-size: 14px; color: #555; }
 
 .case-hero-caption {
@@ -1560,7 +1571,16 @@ a:hover {
   background: #f2f3f2;
   border: 1px solid #e1e4e2;
 }
-.case-photo-frame img {
+.case-photo-frame {
+  border-radius: 4px;
+}
+.case-photo-frame.case-photo-team {
+  aspect-ratio: 1600 / 736;
+}
+.case-photo-team img {
+  object-fit: contain;
+}
+.case-photo-frame:not(.case-photo-team) img {
   object-fit: cover;
 }
 .case-photo-card figcaption {
@@ -1651,7 +1671,9 @@ a:hover {
 
 .related-case-card {
   border: 1px solid var(--line);
-  border-radius: 1rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
   padding: 1.4rem;
   background: #fff;
 }
@@ -1683,4 +1705,28 @@ a:hover {
 
 .service-case-links .text-link {
   margin-top: 22px;
+}
+
+/* Shared row tracks keep metadata, titles and actions aligned without fixed text heights. */
+.project-card { display: grid; grid-template-rows: subgrid; grid-row: span 5; row-gap: 0; }
+.project-card > a { display: grid; grid-template-rows: subgrid; grid-row: span 5; }
+.project-card .text-link { align-self: end; justify-self: start; }
+.service-card:has(.service-footer) { display: grid; grid-template-rows: subgrid; grid-row: span 8; row-gap: 0; }
+.service-footer { display: grid; grid-template-rows: subgrid; grid-row: span 3; }
+.service-footer .price { margin-top: 0; }
+.service-footer .muted { margin-top: 18px; }
+.service-footer .text-link { margin-top: 0; align-self: end; justify-self: start; }
+.related-case-card .text-link { margin-top: auto; padding-top: 24px; align-self: start; }
+.case-intro h1 { font-size: clamp(36px, 4.8vw, 64px); letter-spacing: -0.04em; }
+@media (max-width: 880px) {
+  .service-grid { grid-template-columns: 1fr; gap: 18px; }
+  .service-card:has(.service-footer), .service-footer { display: flex; flex-direction: column; grid-row: auto; }
+}
+@media (max-width: 640px) {
+  .project-card, .project-card > a { display: block; grid-row: auto; }
+}
+
+@media (max-width: 640px) {
+  .form-row { grid-template-rows: auto; }
+  .form-row > label { grid-row: auto; grid-template-rows: auto; }
 }

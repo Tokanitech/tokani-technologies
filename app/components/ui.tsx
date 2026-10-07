@@ -51,14 +51,16 @@ export function PageIntro({
   title,
   description,
   children,
+  className = "",
 }: {
   eyebrow: string;
   title: string;
   description: string;
   children?: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <section className="page-intro wrap">
+    <section className={`page-intro wrap ${className}`}>
       <p className="eyebrow">{eyebrow}</p>
       <h1>{title}</h1>
       <p className="lead">{description}</p>
@@ -94,21 +96,25 @@ export function ProjectImage({
   alt,
   priority = false,
   className = "",
+  sizes = "(max-width: 640px) calc(100vw - 40px), (max-width: 1100px) 50vw, 600px",
 }: {
   src: string;
   alt: string;
   priority?: boolean;
   className?: string;
+  sizes?: string;
 }) {
   return (
     <div className={`project-image ${className}`}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 600px"
-        priority={priority}
-      />
+      <div className="project-image-viewport">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+        />
+      </div>
     </div>
   );
 }

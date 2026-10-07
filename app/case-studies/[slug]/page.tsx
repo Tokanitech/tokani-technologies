@@ -68,6 +68,7 @@ export default async function CaseStudy({
       </div>
 
       <PageIntro
+        className="case-intro"
         eyebrow={`${p.name} · ${p.status}`}
         title={p.title}
         description={p.intro}
@@ -107,6 +108,7 @@ export default async function CaseStudy({
           src={p.image}
           alt={`${p.name} website developed by Tokani`}
           priority
+          sizes="(max-width: 640px) calc(100vw - 66px), (max-width: 1100px) calc(100vw - 90px), (max-width: 1296px) calc(100vw - 122px), 1174px"
         />
       </div>
 
@@ -234,7 +236,7 @@ export default async function CaseStudy({
 
             <div className="case-photo-grid">
               <figure className="case-photo-card">
-                <div className="case-photo-frame">
+                <div className="case-photo-frame case-photo-team">
                   <Image
                     src="/portfolio/jad-team-current.webp"
                     alt="Current JAD Travel team used as authentic website photography"
@@ -272,13 +274,15 @@ export default async function CaseStudy({
 
       {slug === "unravel-viti" && (
         <figure className="wrap case-screenshot">
+          <div className="screenshot-frame">
           <Image
             src="/portfolio/unravel-experiences-20260920.jpg"
             alt="Current Unravel Viti experiences page featuring Fiji cultural tours from Suva"
             width={1348}
             height={926}
-            sizes="(max-width: 760px) 100vw, 1200px"
+            sizes="(max-width: 640px) calc(100vw - 66px), (max-width: 1100px) calc(100vw - 90px), (max-width: 1296px) calc(100vw - 122px), 1174px"
           />
+          </div>
           <figcaption>
             Homepage and experiences page, captured from the Unravel Viti build
             on 20 September 2026.

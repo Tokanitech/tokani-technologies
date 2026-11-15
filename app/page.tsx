@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { Cta, ProjectImage } from "./components/ui";
+import WorkShowcase from "./components/work-showcase";
+import ProductExplorer from "./components/product-explorer";
+import { Cta } from "./components/ui";
 import ProjectCard from "./components/project-card";
 import { projects, services } from "./lib/content";
 import { pageMetadata } from "./lib/seo";
@@ -35,30 +37,12 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="hero-visual">
-          <div className="hero-visual-label">
-            <span>From a business idea</span>
-            <span>to something useful ↘</span>
-          </div>
-          <ProjectImage
-            src="/portfolio/unravel-home-20260920.jpg"
-            alt="Unravel Viti website developed by Tokani"
-            priority
-          />
-          <div className="hero-caption">
-            <div>
-              <span className="eyebrow">Selected work</span>
-              <strong>Unravel Viti</strong>
-              <span>Community-led tourism & transport</span>
-            </div>
-            <Link
-              href="/case-studies/unravel-viti"
-              aria-label="Read the Unravel Viti case study"
-            >
-              ↗
-            </Link>
-          </div>
-        </div>
+        <WorkShowcase examples={["unravel-viti", "jad", "dfc"].map(slug => {
+          const project = projects.find(project => project.slug === slug)!;
+          return { slug: project.slug, name: project.name, image: project.image,
+            summary: slug === "unravel-viti" ? "Community-led tourism & transport" : slug === "jad" ? "Travel services & customer enquiries" : "Flight deals & travel planning",
+            href: `/case-studies/${project.slug}` };
+        })} />
       </section>
       <div className="principle-strip">
         <div className="wrap">
@@ -152,20 +136,7 @@ export default function Home() {
             Explore products and their status ↗
           </Link>
         </div>
-        <div className="product-list">
-          <Link href="/products#travelops">
-            <span className="status">In development</span>
-            <h3>TravelOps</h3>
-            <p>Transport operations for operators and organisations.</p>
-            <span aria-hidden="true">↗</span>
-          </Link>
-          <Link href="/products#careers" id="education-case">
-            <span className="status">Public platform</span>
-            <h3>Tokani Careers</h3>
-            <p>Explore Fiji study and career pathways.</p>
-            <span aria-hidden="true">↗</span>
-          </Link>
-        </div>
+        <ProductExplorer />
       </section>
       <section className="about-band" id="story">
         <div className="wrap about-summary" id="approach">

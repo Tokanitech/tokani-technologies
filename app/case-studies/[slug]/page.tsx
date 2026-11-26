@@ -1,4 +1,5 @@
 import Image from "next/image";
+import TalaLekaShowcase from "../../components/tala-leka-showcase";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -102,11 +103,11 @@ export default async function CaseStudy({
       )}
 
       <div
-        className={`wrap case-hero ${slug === "unravel-viti" ? "unravel-screenshots" : ""}`}
+        className={`wrap case-hero ${slug === "unravel-viti" ? "unravel-screenshots" : slug === "tala-leka" ? "tala-hero" : ""}`}
       >
         <ProjectImage
           src={p.image}
-          alt={`${p.name} website developed by Tokani`}
+          alt={slug === "tala-leka" ? "Tala Leka operations dashboard with fictional simulation data" : `${p.name} website developed by Tokani`}
           priority
           sizes="(max-width: 640px) calc(100vw - 66px), (max-width: 1100px) calc(100vw - 90px), (max-width: 1296px) calc(100vw - 122px), 1174px"
         />
@@ -290,6 +291,40 @@ export default async function CaseStudy({
         </figure>
       )}
 
+      {slug === "tala-leka" && <>
+        <section className="wrap section tala-case" aria-labelledby="tala-challenge">
+          <p className="eyebrow">The business opportunity</p>
+          <h2 id="tala-challenge">Beyond traditional delivery operations.</h2>
+          <p>Unravel Viti operates the logistics service; Tokani developed the technology behind it. The system is designed to support merchants whether they receive orders online, by telephone, through social media or in-store. NewWorld is the initial use case, not the limit of the model.</p>
+          <div className="tala-project-facts">
+            <div><strong>Client</strong><span>Unravel Viti</span></div>
+            <div><strong>Industry</strong><span>Logistics &amp; fulfilment</span></div>
+            <div><strong>Project</strong><span>Custom business system</span></div>
+            <div><strong>Status</strong><span>Controlled rollout</span></div>
+          </div>
+          <h3>Three connected applications. One operational workflow.</h3>
+          <ol className="tala-flow">
+            {[
+              ["Merchant intake","Register the order, recipient and supporting information."],
+              ["Management & dispatch","Review orders, organise runs and assign drivers."],
+              ["Driver collection","Verify goods and capture collection evidence."],
+              ["Last-mile delivery","Update progress and capture exceptions or returns."],
+              ["Proof of delivery","Record recipient acknowledgement, photographs and signature."],
+              ["Reporting","Produce merchant statements and operational records."]
+            ].map(([title,description],i)=><li key={title}><span className="eyebrow">0{i+1}</span><strong>{title}</strong><p>{description}</p></li>)}
+          </ol>
+        </section>
+        <TalaLekaShowcase />
+        <section className="wrap section tala-case" aria-labelledby="tala-tech">
+          <p className="eyebrow">Skills &amp; technologies</p>
+          <h2 id="tala-tech">Engineering around the way a business works.</h2>
+          <p>React and TypeScript for application interfaces; Supabase and PostgreSQL for authentication and data access; Vercel and GitHub for deployment and version control; Resend for controlled email workflows. The driver experience is mobile-first and reporting produces branded PDFs.</p>
+          <p className="muted">Access controls and merchant separation are designed into the platform. This is not a security certification or a claim that all live acceptance tests are complete.</p>
+          <Link className="text-link" href="/case-studies/unravel-viti">See the original Unravel Viti website project →</Link>
+        </section>
+      </>}
+      {slug === "unravel-viti" && <section className="wrap case-summary"><p className="eyebrow">The next chapter</p><h2>From a website to a connected business system.</h2><p>Tokani also developed the Tala Leka logistics management platform for Unravel Viti.</p><Link className="text-link" href="/case-studies/tala-leka">Explore the Tala Leka case study →</Link></section>}
+
       <section className="section wrap case-body">
         <div className="split">
           <p className="eyebrow">The challenge</p>
@@ -350,7 +385,7 @@ export default async function CaseStudy({
                 target="_blank"
                 rel="noreferrer"
               >
-                View the current website{" "}
+                {slug === "tala-leka" ? "Explore Unravel’s logistics service" : "View the current website"}{" "}
                 <span className="sr-only">(opens in a new tab)</span> ↗
               </a>
             ) : null}
@@ -390,7 +425,7 @@ export default async function CaseStudy({
           description: p.seoDescription,
           url: `${siteUrl}/case-studies/${slug}`,
           mainEntityOfPage: `${siteUrl}/case-studies/${slug}`,
-          image: `${siteUrl}${p.image}`,
+          image: new URL(p.image, siteUrl).href,
           dateModified: p.dateModified,
           inLanguage: "en-FJ",
           articleSection: "Client case studies",

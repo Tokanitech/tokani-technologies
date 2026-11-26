@@ -48,7 +48,7 @@ export default function ProductExplorer() {
           <ol className="product-steps" aria-label={product.id === "logistics-fulfilment" ? "Last-mile fulfilment workflow" : product.id === "travelops" ? "Planned TravelOps workflow" : "Career exploration steps"}>
             {product.steps.map((step, index) => <li key={step}><span aria-hidden="true">0{index + 1}</span>{step}</li>)}
           </ol>
-          <small>{product.id === "logistics-fulfilment" ? "Controlled rollout · First client implementation: Tala Leka, Unravel Viti" : product.id === "travelops" ? "Product direction · Features are still being developed" : "Guidance only · Confirm official entry requirements"}</small>
+          <small>{product.id === "logistics-fulfilment" ? "Controlled rollout · Discuss your delivery requirements with Tokani" : product.id === "travelops" ? "Product direction · Features are still being developed" : "Guidance only · Confirm official entry requirements"}</small>
           <Link className="text-link" href={product.href}>{product.action} ↗</Link>
         </article>
       </div>

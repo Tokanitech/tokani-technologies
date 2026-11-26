@@ -29,7 +29,7 @@ export default async function Service({
     slug === "website-development"
       ? ["jad", "unravel-viti", "vatudei"]
       : slug === "custom-systems"
-        ? ["dfc"]
+        ? ["tala-leka", "dfc"]
         : [];
 
   return (

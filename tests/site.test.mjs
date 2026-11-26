@@ -76,14 +76,17 @@ test('Tala Leka sample documents are served as valid local PDFs',async()=>{
 });
 
 
-test('Tala Leka is listed as a controlled client platform on Products and the homepage', async()=>{
+test('Logistics product is channel-independent and distinguishes its first client deployment', async()=>{
   const products=await(await fetch(base+'/products')).text();
-  assert.match(products,/id="tala-leka"/);
-  assert.match(products,/Controlled rollout · Client deployment/);
-  assert.match(products,/Unravel Viti operates the Tala Leka fulfilment service/);
-  assert.match(products,/not\s+a public self-service subscription/);
+  assert.match(products,/id="logistics-fulfilment"/);
+  assert.match(products,/Logistics &amp; Fulfilment Management System/);
+  for(const channel of ['Online stores','Phone calls','Email','Social media','Messaging apps','In-store sales']) assert.ok(products.includes(channel));
+  assert.match(products,/An e-commerce\s+website is not required/);
+  assert.match(products,/Direct integration with third-party sales channels is not implied/);
+  assert.match(products,/Tala Leka Logistics — Unravel Viti/);
+  assert.match(products,/not a public self-service subscription/);
   assert.match(products,/href="\/case-studies\/tala-leka"/);
   const home=await(await fetch(base+'/')).text();
-  assert.match(home,/href="\/products#tala-leka"/);
-  assert.match(home,/Explore Tala Leka/);
+  assert.match(home,/href="\/products#logistics-fulfilment"/);
+  assert.match(home,/Explore logistics &amp; fulfilment/);
 });

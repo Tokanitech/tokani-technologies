@@ -3,7 +3,7 @@ import { Breadcrumbs, PageIntro } from "../components/ui";
 import { pageMetadata } from "../lib/seo";
 export const metadata = pageMetadata(
   "Contact Tokani — Let’s Talk",
-  "Contact Tokani Technologies in Suva, Fiji about websites, CRM or custom business systems. Email askme@tokani.com.fj or call +679 902 1622.",
+  "Contact Tokani Technologies in Fiji about our products, logistics and fulfilment software, TravelOps, TripFlow, Tokani Careers, SME websites and custom solutions.",
   "/contact",
 );
 export default function Contact() {
@@ -14,8 +14,8 @@ export default function Contact() {
       </div>
       <PageIntro
         eyebrow="Start a conversation"
-        title="What would you like to make easier?"
-        description="Tell us where your business is today and what you are trying to improve. You do not need a technical brief to get started."
+        title="Let’s talk about what your business needs."
+        description="Ask about a Tokani product, discuss a website or custom system, request a demonstration or get in touch about an existing project. No technical brief needed."
       />
       <section className="section wrap contact-grid compact-top">
         <div>
@@ -25,8 +25,8 @@ export default function Contact() {
             the next step.
           </h2>
           <p>
-            Based in Suva and working with businesses and organisations across
-            Fiji.
+            Based in Suva, supporting businesses and organisations across Fiji
+            and the Pacific.
           </p>
           <div className="contact-options">
             <a href="mailto:askme@tokani.com.fj">
@@ -39,6 +39,12 @@ export default function Contact() {
               <span>WhatsApp</span>Start a conversation ↗
             </a>
           </div>
+          <h3>Products &amp; solutions</h3>
+          <p>
+            Enquire about Logistics &amp; Fulfilment Management, TravelOps,
+            TripFlow, Tokani Careers or Quote My Job. We also help with
+            websites, SME digitisation, business systems and integrations.
+          </p>
           <h3>What happens next?</h3>
           <p>
             We review your enquiry, clarify anything we need to understand and

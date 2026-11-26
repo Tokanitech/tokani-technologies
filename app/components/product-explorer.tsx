@@ -5,6 +5,13 @@ import Link from "next/link";
 
 const products = [
   {
+    id: "tala-leka", name: "Tala Leka", audience: "For logistics operators & merchants",
+    status: "Controlled rollout", title: "Connect the last-mile fulfilment workflow.",
+    description: "Developed by Tokani for Unravel Viti, bringing merchant orders, dispatch, mobile drivers and delivery evidence into one platform.",
+    steps: ["Merchant order intake", "Dispatch & driver fulfilment", "Proof of delivery & reporting"],
+    href: "/products#tala-leka", action: "Explore Tala Leka",
+  },
+  {
     id: "careers", name: "Tokani Careers", audience: "For students & families",
     status: "Public platform", title: "From school subjects to your next step.",
     description: "Explore how subjects connect to careers and study pathways in Fiji. Use the guidance to start a conversation with your school or institution.",
@@ -38,14 +45,14 @@ export default function ProductExplorer() {
           <span className={`status ${product.id === "careers" ? "status-public" : ""}`}>{product.status}</span>
           <h3>{product.title}</h3>
           <p>{product.description}</p>
-          <ol className="product-steps" aria-label={product.id === "travelops" ? "Planned TravelOps workflow" : "Career exploration steps"}>
+          <ol className="product-steps" aria-label={product.id === "tala-leka" ? "Tala Leka fulfilment workflow" : product.id === "travelops" ? "Planned TravelOps workflow" : "Career exploration steps"}>
             {product.steps.map((step, index) => <li key={step}><span aria-hidden="true">0{index + 1}</span>{step}</li>)}
           </ol>
-          <small>{product.id === "travelops" ? "Product direction · Features are still being developed" : "Guidance only · Confirm official entry requirements"}</small>
+          <small>{product.id === "tala-leka" ? "Client deployment · Controlled rollout with Unravel Viti" : product.id === "travelops" ? "Product direction · Features are still being developed" : "Guidance only · Confirm official entry requirements"}</small>
           <Link className="text-link" href={product.href}>{product.action} ↗</Link>
         </article>
       </div>
-      <noscript><p><Link href="/products">View Tokani Careers and TravelOps details →</Link></p></noscript>
+      <noscript><p><Link href="/products">View Tala Leka, Tokani Careers and TravelOps details →</Link></p></noscript>
     </div>
   );
 }

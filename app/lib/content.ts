@@ -143,6 +143,17 @@ export const services = [
 ] as const;
 export const projects = [
   {
+  "slug": "tala-leka",
+  "name": "Tala Leka Logistics",
+  "category": "Custom business systems · Logistics",
+  "status": "Controlled rollout",
+  "image": "https://res.cloudinary.com/gbsz4bq3/image/upload/v1795688723/tala-leka/simulation-operations-2026.png",
+  "description": "A connected last-mile fulfilment management platform developed for Unravel Viti, with management, merchant and driver applications.",
+  "href": "/case-studies/tala-leka",
+  "external": false,
+  "label": "Explore the system"
+},
+  {
     slug: "unravel-viti",
     name: "Unravel Viti",
     category: "Tourism & transport",
@@ -259,6 +270,42 @@ export const caseStudies: Record<
     url?: string;
   }
 > = {
+  "tala-leka": {
+  "name": "Tala Leka Logistics",
+  "title": "From a business concept to a connected logistics platform.",
+  "intro": "Tokani developed a custom last-mile fulfilment management system for Unravel Viti, designed around the operational requirements of Fiji businesses.",
+  "image": "https://res.cloudinary.com/gbsz4bq3/image/upload/v1795688723/tala-leka/simulation-operations-2026.png",
+  "status": "Controlled rollout",
+  "challenge": "Unravel needed a structured way to manage NewWorld delivery orders, coordinate drivers, document handovers and reconcile work. The broader opportunity was to support both online and traditional merchants without requiring each merchant to operate its own delivery infrastructure.",
+  "work": [
+    "Designed connected management and dispatch, merchant and mobile driver interfaces.",
+    "Implemented structured order intake, driver assignment, collection checks, delivery status and partial, failed and returned delivery workflows.",
+    "Developed digital proof of delivery with recipient acknowledgement, photographs and signatures, plus branded statements and operational reporting.",
+    "Built role-based access, merchant-scoped records, account provisioning and event-driven notification capabilities with controlled activation.",
+    "Established separate production and simulation environments for demonstration, training and release verification."
+  ],
+  "capabilities": [
+    "Business process design",
+    "Multi-user application development",
+    "Mobile-first driver workflows",
+    "Database architecture and role-based access",
+    "Automated PDF generation",
+    "Event-driven email workflows",
+    "Version control and regression testing"
+  ],
+  "relatedServices": [
+    {
+      "label": "QAQA — Custom systems & applications",
+      "href": "/services/custom-systems"
+    }
+  ],
+  "outcome": "A deployed core platform and separate simulation environment provide the technological foundation for Unravel to offer a multi-merchant last-mile fulfilment service. NewWorld is the initial use case; other retailers, pharmacies and traditional merchants are potential expansion opportunities, subject to operational and handling requirements.",
+  "boundary": "The platform is progressing through controlled rollout. Live acceptance, security and notification checks remain release gates; no claims are made about delivery volumes, financial results, regulatory approval or security certification. All screenshots and documents shown use fictional or simulation data.",
+  "seoTitle": "Tala Leka Logistics Software — Fiji Custom Business Systems",
+  "seoDescription": "Explore the Tala Leka logistics management system developed by Tokani for Unravel Viti: dispatch, merchant and driver portals, digital delivery evidence and reporting.",
+  "dateModified": "2026-11-27T08:17:00+12:00",
+  "url": "https://unravelfiji.com.fj/tala-leka-logistics"
+},
   "unravel-viti": {
     name: "Unravel Viti",
     title: "Unravel Viti: a digital foundation for community-led tourism in Fiji.",

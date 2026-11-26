@@ -1,0 +1,23 @@
+name: Materialise public Tala Leka samples
+on:
+  push:
+    branches: [fix/local-tala-leka-pdfs]
+    paths: [.github/workflows/materialise-tala-samples.yml]
+permissions:
+  contents: write
+jobs:
+  materialise:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install temporary image conversion dependency
+        run: python -m pip install Pillow==12.0.0
+      - name: Recover existing samples or convert approved preview images
+        run: python scripts/materialise-tala-samples.py
+      - name: Commit only the two sample PDFs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/portfolio/tala-leka/monthly-statement.pdf public/portfolio/tala-leka/proof-of-delivery.pdf
+          git commit -m "Store approved public sample PDFs locally"
+          git push origin HEAD:fix/local-tala-leka-pdfs

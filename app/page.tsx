@@ -129,8 +129,8 @@ export default function Home() {
             Real local context.
           </h2>
           <p className="lead">
-            From career exploration to managing transport, our own products
-            begin with the same question: what would make this easier?
+            From career exploration to transport and last-mile fulfilment, our
+            products and platforms begin with the same question: what would make this easier?
           </p>
           <Link className="text-link" href="/products">
             Explore products and their status ↗

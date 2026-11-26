@@ -5,6 +5,13 @@ import Link from "next/link";
 
 const products = [
   {
+    id: "logistics-fulfilment", name: "Logistics & Fulfilment", audience: "For delivery operators & businesses",
+    status: "Controlled rollout", title: "Every order channel. One delivery operation.",
+    description: "Manage last-mile deliveries for orders from online stores, calls, email, social media, messaging apps and in-store sales.",
+    steps: ["Structured intake from any sales channel", "Dispatch & driver fulfilment", "Proof of delivery & reporting"],
+    href: "/products#logistics-fulfilment", action: "Explore logistics & fulfilment",
+  },
+  {
     id: "careers", name: "Tokani Careers", audience: "For students & families",
     status: "Public platform", title: "From school subjects to your next step.",
     description: "Explore how subjects connect to careers and study pathways in Fiji. Use the guidance to start a conversation with your school or institution.",
@@ -38,14 +45,14 @@ export default function ProductExplorer() {
           <span className={`status ${product.id === "careers" ? "status-public" : ""}`}>{product.status}</span>
           <h3>{product.title}</h3>
           <p>{product.description}</p>
-          <ol className="product-steps" aria-label={product.id === "travelops" ? "Planned TravelOps workflow" : "Career exploration steps"}>
+          <ol className="product-steps" aria-label={product.id === "logistics-fulfilment" ? "Last-mile fulfilment workflow" : product.id === "travelops" ? "Planned TravelOps workflow" : "Career exploration steps"}>
             {product.steps.map((step, index) => <li key={step}><span aria-hidden="true">0{index + 1}</span>{step}</li>)}
           </ol>
-          <small>{product.id === "travelops" ? "Product direction · Features are still being developed" : "Guidance only · Confirm official entry requirements"}</small>
+          <small>{product.id === "logistics-fulfilment" ? "Controlled rollout · Discuss your delivery requirements with Tokani" : product.id === "travelops" ? "Product direction · Features are still being developed" : "Guidance only · Confirm official entry requirements"}</small>
           <Link className="text-link" href={product.href}>{product.action} ↗</Link>
         </article>
       </div>
-      <noscript><p><Link href="/products">View Tokani Careers and TravelOps details →</Link></p></noscript>
+      <noscript><p><Link href="/products">View logistics & fulfilment, Tokani Careers and TravelOps details →</Link></p></noscript>
     </div>
   );
 }

@@ -74,3 +74,17 @@ test('Tala Leka sample documents are served as valid local PDFs',async()=>{
     const bytes=Buffer.from(await r.arrayBuffer());assert.ok(bytes.length>1000);assert.equal(bytes.subarray(0,5).toString(),'%PDF-');assert.match(bytes.subarray(-1024).toString(),/%%EOF/);
   }
 });
+
+
+test('Logistics product is channel-independent and has no client showcase on Products', async()=>{
+  const products=await(await fetch(base+'/products')).text();
+  assert.match(products,/id="logistics-fulfilment"/);
+  assert.match(products,/Logistics &amp; Fulfilment Management System/);
+  for(const channel of ['Online stores','Phone calls','Email','Social media','Messaging apps','In-store sales']) assert.ok(products.includes(channel));
+  assert.match(products,/An e-commerce\s+website is not required/);
+  assert.match(products,/Direct integration with third-party sales channels is not implied/);
+  assert.doesNotMatch(products,/The product in practice|logistics-client-example|Tala Leka Logistics — Unravel Viti/);
+  const home=await(await fetch(base+'/')).text();
+  assert.match(home,/href="\/products#logistics-fulfilment"/);
+  assert.match(home,/Explore logistics &amp; fulfilment/);
+});

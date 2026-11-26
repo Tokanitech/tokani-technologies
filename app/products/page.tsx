@@ -3,7 +3,7 @@ import { Breadcrumbs, Cta, PageIntro, ProjectImage } from "../components/ui";
 import { pageMetadata } from "../lib/seo";
 export const metadata = pageMetadata(
   "Tokani Products — Practical Tools for Fiji",
-  "Explore Tokani Careers, Quote My Job and the TravelOps development programme. See what is public and what is still being built.",
+  "Explore logistics and fulfilment management software, Tokani Careers, Quote My Job and TravelOps. See public tools, client deployments and products in development.",
   "/products",
 );
 export default function Products() {
@@ -15,9 +15,46 @@ export default function Products() {
       <PageIntro
         eyebrow="Built around local needs"
         title="Useful tools. Room to grow."
-        description="Our products tackle specific problems in Fiji. We distinguish public tools from products still in development, so you know what to expect."
+        description="Our products and platforms tackle specific problems in Fiji. We distinguish public tools, client deployments and products in development, so you know what to expect."
       />
       <section className="section wrap compact-top">
+        <article className="product-feature" id="logistics-fulfilment">
+          <div>
+            <span className="status">Business platform · Controlled rollout</span>
+            <h2>Logistics &amp; Fulfilment Management System</h2>
+            <p className="lead">Every order channel. One delivery operation.</p>
+            <p>
+              A last-mile delivery management platform for businesses that need
+              to organise, dispatch, track and document deliveries, whether they
+              operate their own fleet or fulfil orders for multiple merchants.
+            </p>
+            <p>
+              Orders can be registered from online stores, phone calls, emails,
+              social media, messaging apps or in-store sales. An e-commerce
+              website is not required.
+            </p>
+            <div className="two-col">
+              <div><h3>Delivery businesses</h3><p>Manage merchant accounts, delivery assignments, drivers, exceptions and reconciliation.</p></div>
+              <div><h3>Retailers &amp; other businesses</h3><p>Register orders, follow delivery outcomes and access delivery evidence and statements.</p></div>
+            </div>
+            <p className="muted">Orders are registered through structured intake. Direct integration with third-party sales channels is not implied and would require separate scoping.</p>
+            <Link className="button" href="/contact">Discuss your delivery requirements ↗</Link>
+          </div>
+          <div className="logistics-product-visual">
+            <div className="logistics-channel-flow" aria-label="Order channels feed a common delivery management workflow">
+              <p className="eyebrow">Orders from any channel</p>
+              <div className="logistics-channels">
+                {["Online stores", "Phone calls", "Email", "Social media", "Messaging apps", "In-store sales"].map(channel => <span key={channel}>{channel}</span>)}
+              </div>
+              <span className="logistics-flow-arrow" aria-hidden="true">↓</span>
+              <strong className="logistics-intake">Structured order intake</strong>
+              <span className="logistics-flow-arrow" aria-hidden="true">↓</span>
+              <ol className="logistics-flow-steps">
+                {["Dispatch & driver assignment", "Collection & last-mile delivery", "Digital proof of delivery", "Reporting & reconciliation"].map(step => <li key={step}>{step}</li>)}
+              </ol>
+            </div>
+          </div>
+        </article>
         <article className="product-feature travelops-feature" id="travelops">
           <div>
             <span className="status">In development</span>

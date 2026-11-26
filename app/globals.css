@@ -1792,3 +1792,19 @@ a:hover {
 .tala-hero .project-image img { object-fit:contain; }
 @media(max-width:760px) { .tala-project-facts,.tala-flow {grid-template-columns:repeat(2,minmax(0,1fr));} .tala-gallery-display {grid-template-columns:1fr;} .tala-gallery-display figure {width:100%;} }
 @media(max-width:420px) { .tala-flow {grid-template-columns:1fr;} .work-showcase .showcase-controls {flex-wrap:wrap;} .work-showcase .showcase-controls button {flex:1 1 42%;} }
+
+/* Keep the three-way product selector usable on narrow screens. */
+@media (max-width: 520px) {
+  .product-switcher { flex-wrap: wrap; }
+  .product-switcher button { flex: 1 1 42%; }
+}
+
+/* Product-led logistics section: order intake diagram. */
+.logistics-channel-flow { padding:24px; border:1px solid var(--line); border-radius:10px; background:var(--mist); text-align:center; }
+.logistics-channels { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:16px 0; }
+.logistics-channels span { background:#fff; border:1px solid var(--line); border-radius:5px; padding:10px 6px; font-size:13px; }
+.logistics-flow-arrow { display:block; margin:12px 0; color:var(--brown); font-size:22px; }
+.logistics-intake { display:block; padding:14px; background:var(--black); color:#fff; border-radius:5px; }
+.logistics-flow-steps { list-style:none; padding:0; margin:0; }
+.logistics-flow-steps li { border-top:1px solid var(--line); padding:12px 4px; font-size:14px; }
+@media(max-width:760px) { .logistics-channel-flow { padding:16px; } }

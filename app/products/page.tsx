@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Breadcrumbs, Cta, PageIntro, ProjectImage } from "../components/ui";
 import { pageMetadata } from "../lib/seo";
+import { caseStudies } from "../lib/content";
 export const metadata = pageMetadata(
   "Tokani Products — Practical Tools for Fiji",
-  "Explore Tokani Careers, Quote My Job and the TravelOps development programme. See what is public and what is still being built.",
+  "Explore Tala Leka logistics technology, Tokani Careers, Quote My Job and TravelOps. See public tools, client deployments and products in development.",
   "/products",
 );
 export default function Products() {
@@ -15,9 +16,36 @@ export default function Products() {
       <PageIntro
         eyebrow="Built around local needs"
         title="Useful tools. Room to grow."
-        description="Our products tackle specific problems in Fiji. We distinguish public tools from products still in development, so you know what to expect."
+        description="Our products and platforms tackle specific problems in Fiji. We distinguish public tools, client deployments and products in development, so you know what to expect."
       />
       <section className="section wrap compact-top">
+        <article className="product-feature tala-product-feature" id="tala-leka">
+          <ProjectImage
+            src={caseStudies["tala-leka"].image}
+            alt="Tala Leka operations dashboard — fictional simulation data"
+          />
+          <div>
+            <span className="status">Controlled rollout · Client deployment</span>
+            <h2>Tala Leka</h2>
+            <p className="lead">Connected last-mile fulfilment management.</p>
+            <p>
+              Logistics technology developed by Tokani for Unravel Viti, bringing
+              merchant order intake, dispatch, mobile driver workflows and digital
+              proof of delivery together in one operational platform.
+            </p>
+            <div className="two-col">
+              <div><h3>For logistics operators</h3><p>Coordinate deliveries, drivers, exceptions and reporting.</p></div>
+              <div><h3>For merchants</h3><p>Register orders, track delivery outcomes and review monthly statements.</p></div>
+            </div>
+            <p className="muted">
+              Unravel Viti operates the Tala Leka fulfilment service. The platform is
+              in controlled rollout, with NewWorld as its initial use case. It is not
+              a public self-service subscription. All displayed examples use fictional data.
+            </p>
+            <Link className="button" href="/case-studies/tala-leka">Explore the system &amp; screenshots ↗</Link>
+            <p><Link className="text-link" href="/contact">Discuss logistics technology with Tokani →</Link></p>
+          </div>
+        </article>
         <article className="product-feature travelops-feature" id="travelops">
           <div>
             <span className="status">In development</span>

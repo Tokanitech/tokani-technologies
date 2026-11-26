@@ -63,6 +63,14 @@ test('Tala Leka case study is discoverable and accurately labelled',async()=>{
   const html=await(await fetch(base+'/case-studies/tala-leka')).text();
   assert.match(html,/Controlled rollout/);assert.match(html,/fictional|Fictional/);
   for(const label of ['Operations','Order intake','Driver app','Merchant view','Monthly statement','Proof of delivery'])assert.ok(html.includes(label));
-  assert.match(html,/unravel-viti-generic-mock-statement-2026\.pdf/);assert.match(html,/pod-synthetic-2026\.pdf/);
+  assert.match(html,/href="\/portfolio\/tala-leka\/monthly-statement\.pdf"/);assert.match(html,/href="\/portfolio\/tala-leka\/proof-of-delivery\.pdf"/);
   assert.match(html,/href="\/services\/custom-systems"/);
+});
+
+
+test('Tala Leka sample documents are served as valid local PDFs',async()=>{
+  for(const path of ['/portfolio/tala-leka/monthly-statement.pdf','/portfolio/tala-leka/proof-of-delivery.pdf']){
+    const r=await fetch(base+path);assert.equal(r.status,200);assert.match(r.headers.get('content-type')||'',/^application\/pdf\b/i);
+    const bytes=Buffer.from(await r.arrayBuffer());assert.ok(bytes.length>1000);assert.equal(bytes.subarray(0,5).toString(),'%PDF-');assert.match(bytes.subarray(-1024).toString(),/%%EOF/);
+  }
 });

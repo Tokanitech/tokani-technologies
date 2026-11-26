@@ -16,7 +16,7 @@ export default function ProjectCard({
       >
         <ProjectImage
           src={project.image}
-          alt={`${project.name} website project`}
+          alt={project.slug === "tala-leka" ? "Tala Leka operations dashboard — simulation data" : `${project.name} website project`}
         />
         <div className="project-meta">
           <span className="eyebrow">{project.category}</span>

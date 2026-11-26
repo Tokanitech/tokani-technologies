@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 const base=process.env.TEST_BASE_URL||'http://localhost:3000';
-const pages=['/','/services','/services/website-development','/services/crm-workflows','/services/custom-systems','/products','/our-work','/case-studies','/about','/contact','/privacy','/case-studies/unravel-viti','/case-studies/vatudei','/case-studies/dfc','/case-studies/jad'];
+const pages=['/','/services','/services/website-development','/services/crm-workflows','/services/custom-systems','/products','/our-work','/case-studies','/about','/contact','/privacy','/case-studies/unravel-viti','/case-studies/vatudei','/case-studies/dfc','/case-studies/jad','/case-studies/tala-leka'];
 const results=new Map();
 for(const path of pages){test(`${path}: rendered content, metadata and valid internal links`,async()=>{const r=await fetch(base+path);assert.equal(r.status,200);const html=await r.text();results.set(path,html);assert.equal((html.match(/<h1(?:\s|>)/g)||[]).length,1);const canonical=html.match(/rel="canonical" href="([^"]+)"/);assert.ok(canonical);assert.equal(new URL(canonical[1]).href,new URL(path,"https://www.tokani.com.fj").href);assert.match(html,/<meta name="description" content="[^"]+"/);assert.match(html,/<title>[^<]+<\/title>/);assert.ok(!html.includes('name="robots" content="noindex'));assert.match(html,/application\/ld\+json/);assert.ok(!html.includes('Zoho'));for(const match of html.matchAll(/href="(\/[^"?#]*)(?:[^"#]*)(?:#[^"]*)?"/g)){const href=match[1];if(href.startsWith('/_next')||href.startsWith('/brand')||href.startsWith('/portfolio'))continue;assert.ok(pages.includes(href),`unexpected internal link ${href}`);}assert.ok(!html.includes('/_vercel/insights/script.js'));});}
 test('sitemap lists every intended public page exactly once',async()=>{const r=await fetch(base+'/sitemap.xml');assert.equal(r.status,200);const s=await r.text();const urls=[...s.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);assert.equal(urls.length,pages.length);assert.equal(new Set(urls).size,pages.length);for(const p of pages)assert.ok(urls.includes('https://www.tokani.com.fj'+(p==='/'?'':p)));});
@@ -54,4 +54,15 @@ test('service pages link into relevant case-study clusters',async()=>{
 test('production robots metadata permits rich Google previews',async()=>{
   const s=await(await fetch(base+'/case-studies/jad')).text();
   assert.match(s,/name="googlebot" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"/);
+});
+
+test('Tala Leka case study is discoverable and accurately labelled',async()=>{
+  for(const path of ['/','/our-work','/case-studies','/services/custom-systems','/case-studies/unravel-viti']){
+    const html=await(await fetch(base+path)).text();assert.match(html,/href="\/case-studies\/tala-leka"/);
+  }
+  const html=await(await fetch(base+'/case-studies/tala-leka')).text();
+  assert.match(html,/Controlled rollout/);assert.match(html,/fictional|Fictional/);
+  for(const label of ['Operations','Order intake','Driver app','Merchant view','Monthly statement','Proof of delivery'])assert.ok(html.includes(label));
+  assert.match(html,/unravel-viti-generic-mock-statement-2026\.pdf/);assert.match(html,/pod-synthetic-2026\.pdf/);
+  assert.match(html,/href="\/services\/custom-systems"/);
 });

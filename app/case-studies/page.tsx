@@ -25,7 +25,7 @@ export default function CaseStudiesPage() {
       <PageIntro
         eyebrow="Client case studies"
         title="Fiji businesses. Real digital work."
-        description="Detailed examples of how Tokani approaches website development, travel-industry UX, search foundations and practical digital tools around the way each business actually works."
+        description="Detailed examples of how Tokani approaches custom business systems, website development, travel-industry UX, search foundations and practical digital tools around the way each business actually works."
       />
 
       <section className="section wrap compact-top">

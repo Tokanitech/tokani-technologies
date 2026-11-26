@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Breadcrumbs, Cta, PageIntro, ProjectImage } from "../components/ui";
 import { pageMetadata } from "../lib/seo";
-import { caseStudies } from "../lib/content";
 export const metadata = pageMetadata(
   "Tokani Products — Practical Tools for Fiji",
   "Explore logistics and fulfilment management software, Tokani Careers, Quote My Job and TravelOps. See public tools, client deployments and products in development.",
@@ -19,7 +18,7 @@ export default function Products() {
         description="Our products and platforms tackle specific problems in Fiji. We distinguish public tools, client deployments and products in development, so you know what to expect."
       />
       <section className="section wrap compact-top">
-        <article className="product-feature tala-product-feature" id="logistics-fulfilment">
+        <article className="product-feature" id="logistics-fulfilment">
           <div>
             <span className="status">Business platform · Controlled rollout</span>
             <h2>Logistics &amp; Fulfilment Management System</h2>
@@ -53,19 +52,6 @@ export default function Products() {
               <ol className="logistics-flow-steps">
                 {["Dispatch & driver assignment", "Collection & last-mile delivery", "Digital proof of delivery", "Reporting & reconciliation"].map(step => <li key={step}>{step}</li>)}
               </ol>
-            </div>
-          </div>
-          <div className="logistics-client-example">
-            <figure>
-              <ProjectImage src={caseStudies["tala-leka"].image} alt="Tala Leka operations dashboard — fictional simulation data" />
-              <figcaption>First client implementation · Simulation data</figcaption>
-            </figure>
-            <div>
-              <p className="eyebrow">The product in practice</p>
-              <h3>Tala Leka Logistics — Unravel Viti</h3>
-              <p>The first client implementation was developed for Unravel Viti, with NewWorld as its initial use case. Unravel Viti operates the Tala Leka fulfilment service; Tokani developed the underlying technology.</p>
-              <p className="muted">The platform is in controlled rollout, not a public self-service subscription. Wider deployment is subject to scope, readiness and commercial arrangements.</p>
-              <Link className="text-link" href="/case-studies/tala-leka">Explore the client case study &amp; screenshots ↗</Link>
             </div>
           </div>
         </article>

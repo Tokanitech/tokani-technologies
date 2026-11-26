@@ -18,6 +18,50 @@ const contentSecurityPolicy = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: { remotePatterns: [
+  {
+    "protocol": "https",
+    "hostname": "res.cloudinary.com",
+    "port": "",
+    "pathname": "/gbsz4bq3/image/upload/v1795688723/tala-leka/simulation-operations-2026.png",
+    "search": ""
+  },
+  {
+    "protocol": "https",
+    "hostname": "res.cloudinary.com",
+    "port": "",
+    "pathname": "/gbsz4bq3/image/upload/v1795688741/tala-leka/simulation-1440-new-delivery-2026.png",
+    "search": ""
+  },
+  {
+    "protocol": "https",
+    "hostname": "res.cloudinary.com",
+    "port": "",
+    "pathname": "/gbsz4bq3/image/upload/v1795688747/tala-leka/simulation-390-driver-2026.png",
+    "search": ""
+  },
+  {
+    "protocol": "https",
+    "hostname": "res.cloudinary.com",
+    "port": "",
+    "pathname": "/gbsz4bq3/image/upload/v1795688752/tala-leka/simulation-1440-merchant-2026.png",
+    "search": ""
+  },
+  {
+    "protocol": "https",
+    "hostname": "res.cloudinary.com",
+    "port": "",
+    "pathname": "/gbsz4bq3/image/upload/v1795689794/tala-leka/reports/unravel-viti-generic-mock-statement-2026.png",
+    "search": ""
+  },
+  {
+    "protocol": "https",
+    "hostname": "res.cloudinary.com",
+    "port": "",
+    "pathname": "/gbsz4bq3/image/upload/v1795689214/tala-leka/reports/pod-synthetic-2026.png.png",
+    "search": ""
+  }
+] },
   async redirects() {
     return [
       { source: "/index.html", destination: "/", permanent: true },

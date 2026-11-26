@@ -37,10 +37,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <WorkShowcase examples={["unravel-viti", "jad", "dfc"].map(slug => {
+        <WorkShowcase examples={["tala-leka", "unravel-viti", "jad", "dfc"].map(slug => {
           const project = projects.find(project => project.slug === slug)!;
           return { slug: project.slug, name: project.name, image: project.image,
-            summary: slug === "unravel-viti" ? "Community-led tourism & transport" : slug === "jad" ? "Travel services & customer enquiries" : "Flight deals & travel planning",
+            summary: slug === "tala-leka" ? "Custom logistics & fulfilment platform" : slug === "unravel-viti" ? "Community-led tourism & transport" : slug === "jad" ? "Travel services & customer enquiries" : "Flight deals & travel planning",
             href: `/case-studies/${project.slug}` };
         })} />
       </section>
@@ -113,7 +113,7 @@ export default function Home() {
             </div>
           </div>
           <div id="case-studies" className="project-grid home-projects">
-            {["jad", "dfc", "unravel-viti"].map((slug) => {
+            {["tala-leka", "jad", "unravel-viti"].map((slug) => {
               const project = projects.find((project) => project.slug === slug);
               return project ? <ProjectCard key={project.slug} project={project} /> : null;
             })}

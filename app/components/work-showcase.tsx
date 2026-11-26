@@ -32,7 +32,7 @@ export default function WorkShowcase({ examples }: { examples: WorkExample[] }) 
       </div>
       <div id={panelId}>
         <div key={project.slug} className="showcase-enter">
-          <ProjectImage src={project.image} alt={`${project.name} website developed by Tokani`} priority={selected === 0} />
+          <ProjectImage src={project.image} alt={project.slug === "tala-leka" ? "Tala Leka operations dashboard — simulation data" : `${project.name} website developed by Tokani`} priority={selected === 0} />
           <div className="hero-caption">
             <div aria-live="polite" aria-atomic="true">
               <span className="eyebrow">Selected work</span>

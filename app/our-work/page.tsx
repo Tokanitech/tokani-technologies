@@ -10,6 +10,7 @@ export const metadata = pageMetadata(
 );
 
 const workGroups = [
+  { id: "custom-business-systems", title: "Custom Business Systems & Applications", description: "Operational software designed around real business workflows.", slugs: ["tala-leka"] },
   {
     id: "client-websites",
     title: "Client websites & integrations",
@@ -45,7 +46,7 @@ export default function Work() {
       <PageIntro
         eyebrow="The work behind the words"
         title="Built with purpose."
-        description="Start with our client websites and integrations, then explore public tools, work in development and demonstrations. Each project shows its current status."
+        description="Explore custom business systems, client websites and integrations, then explore public tools, work in development and demonstrations. Each project shows its current status."
       >
         <nav className="work-category-links" aria-label="Work categories">
           {workGroups.map((group) => (

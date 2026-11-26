@@ -30,7 +30,7 @@ export default function ContactForm() {
     const body = [
       "Bula Tokani,",
       "",
-      "I would like to discuss a project.",
+      "I would like to make an enquiry.",
       "",
       `Name: ${name}`,
       `Business: ${business || "Not provided"}`,
@@ -139,12 +139,21 @@ export default function ContactForm() {
           <span className="form-label">What do you need?</span>
           <select name="service" required defaultValue="">
             <option value="" disabled>
-              Select a service
+              Select a product or service
             </option>
             <option>Yavu — Website foundation</option>
             <option>Tubu — Website and CRM</option>
             <option>Qaqa — Custom system</option>
+            <option>Logistics &amp; Fulfilment Management System</option>
             <option>TravelOps</option>
+            <option>TripFlow</option>
+            <option>Tokani Careers</option>
+            <option>Quote My Job</option>
+            <option>Website design or redesign</option>
+            <option>CRM, automation or integrations</option>
+            <option>Existing client support or changes</option>
+            <option>Partnership or collaboration</option>
+            <option>Other enquiry</option>
             <option>Not sure yet</option>
           </select>
         </label>
@@ -158,12 +167,12 @@ export default function ContactForm() {
         </label>
       </div>
       <label>
-        Tell us about the project
+        Tell us a little more
         <textarea
           name="details"
           maxLength={4000}
           rows={5}
-          placeholder="What would you like to make easier?"
+          placeholder="Tell us what you need, which product interests you, or what is not working today. If you want a demo, mention that here."
           required
         />
       </label>

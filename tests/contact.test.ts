@@ -152,3 +152,27 @@ test("successful delivery escapes HTML and uses correct recipients and reply add
   assert.ok(String(sent[0].html).includes("&lt;script&gt;"));
   assert.ok(!String(sent[0].html).includes("<script>"));
 });
+
+test("all advertised product and service enquiry types are accepted", async () => {
+  delete process.env.RESEND_API_KEY;
+  for (const service of [
+    "Yavu — Website foundation",
+    "Tubu — Website and CRM",
+    "Qaqa — Custom system",
+    "Logistics & Fulfilment Management System",
+    "TravelOps",
+    "TripFlow",
+    "Tokani Careers",
+    "Quote My Job",
+    "Website design or redesign",
+    "CRM, automation or integrations",
+    "Existing client support or changes",
+    "Partnership or collaboration",
+    "Other enquiry",
+    "Not sure yet",
+  ]) {
+    const response = await POST(req({ ...payload, service }));
+    assert.equal(response.status, 503, service);
+    assert.equal((await response.json()).fallback, true);
+  }
+});

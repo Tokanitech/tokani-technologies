@@ -140,7 +140,16 @@ const services = new Set([
   "Yavu — Website foundation",
   "Tubu — Website and CRM",
   "Qaqa — Custom system",
+  "Logistics & Fulfilment Management System",
   "TravelOps",
+  "TripFlow",
+  "Tokani Careers",
+  "Quote My Job",
+  "Website design or redesign",
+  "CRM, automation or integrations",
+  "Existing client support or changes",
+  "Partnership or collaboration",
+  "Other enquiry",
   "Not sure yet",
 ]);
 const contacts = new Set(["Email", "Phone call", "WhatsApp"]);
@@ -285,7 +294,7 @@ export async function POST(request: Request) {
     reply_to: email,
     subject: `New Tokani enquiry — ${business || name} — ${service}`,
     text: [
-      "New Tokani website enquiry",
+      "New Tokani product or service enquiry",
       "",
       `Name: ${name}`,
       `Business: ${business || "Not provided"}`,
@@ -297,7 +306,7 @@ export async function POST(request: Request) {
       "Project details:",
       details,
     ].join("\n"),
-    html: `<div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;color:#222"><h1>New Tokani website enquiry</h1><p><strong>Name:</strong> ${safe.name}</p><p><strong>Business:</strong> ${safe.business}</p><p><strong>Email:</strong> ${safe.email}</p><p><strong>Phone:</strong> ${safe.phone}</p><p><strong>Service:</strong> ${safe.service}</p><p><strong>Preferred contact:</strong> ${safe.contact}</p><h2>Project details</h2><p style="white-space:pre-wrap">${safe.details}</p></div>`,
+    html: `<div style="font-family:Arial,Helvetica,sans-serif;max-width:640px;color:#222"><h1>New Tokani product or service enquiry</h1><p><strong>Name:</strong> ${safe.name}</p><p><strong>Business:</strong> ${safe.business}</p><p><strong>Email:</strong> ${safe.email}</p><p><strong>Phone:</strong> ${safe.phone}</p><p><strong>Service:</strong> ${safe.service}</p><p><strong>Preferred contact:</strong> ${safe.contact}</p><h2>Project details</h2><p style="white-space:pre-wrap">${safe.details}</p></div>`,
   });
   if (!notificationSent)
     return Response.json({ error: "Email delivery failed." }, { status: 502 });

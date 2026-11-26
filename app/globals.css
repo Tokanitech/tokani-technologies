@@ -1792,3 +1792,11 @@ a:hover {
 .tala-hero .project-image img { object-fit:contain; }
 @media(max-width:760px) { .tala-project-facts,.tala-flow {grid-template-columns:repeat(2,minmax(0,1fr));} .tala-gallery-display {grid-template-columns:1fr;} .tala-gallery-display figure {width:100%;} }
 @media(max-width:420px) { .tala-flow {grid-template-columns:1fr;} .work-showcase .showcase-controls {flex-wrap:wrap;} .work-showcase .showcase-controls button {flex:1 1 42%;} }
+
+/* Keep the product dashboard readable and the three-way selector usable on narrow screens. */
+.tala-product-feature .project-image-viewport { aspect-ratio: 1440 / 900; }
+.tala-product-feature .project-image img { object-fit: contain; }
+@media (max-width: 520px) {
+  .product-switcher { flex-wrap: wrap; }
+  .product-switcher button { flex: 1 1 42%; }
+}

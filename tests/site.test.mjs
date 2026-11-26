@@ -74,3 +74,16 @@ test('Tala Leka sample documents are served as valid local PDFs',async()=>{
     const bytes=Buffer.from(await r.arrayBuffer());assert.ok(bytes.length>1000);assert.equal(bytes.subarray(0,5).toString(),'%PDF-');assert.match(bytes.subarray(-1024).toString(),/%%EOF/);
   }
 });
+
+
+test('Tala Leka is listed as a controlled client platform on Products and the homepage', async()=>{
+  const products=await(await fetch(base+'/products')).text();
+  assert.match(products,/id="tala-leka"/);
+  assert.match(products,/Controlled rollout · Client deployment/);
+  assert.match(products,/Unravel Viti operates the Tala Leka fulfilment service/);
+  assert.match(products,/not\s+a public self-service subscription/);
+  assert.match(products,/href="\/case-studies\/tala-leka"/);
+  const home=await(await fetch(base+'/')).text();
+  assert.match(home,/href="\/products#tala-leka"/);
+  assert.match(home,/Explore Tala Leka/);
+});
